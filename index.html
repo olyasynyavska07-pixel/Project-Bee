@@ -1,20 +1,33 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Мій перший сайт</title>
+    <title>Бджолина лавка</title>
     <style>
-        body { font-family: sans-serif; text-align: center; background-color: #f0f0f0; }
-        .card { background: white; padding: 20px; border-radius: 10px; display: inline-block; margin-top: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h1 { color: #333; }
-        button { padding: 10px 20px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px; }
+        body { font-family: sans-serif; background-color: #fff9e6; text-align: center; color: #4d3300; }
+        .container { max-width: 600px; margin: 50px auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1 { color: #ffcc00; }
+        .product { border-bottom: 1px solid #eee; padding: 10px; }
+        .btn { background: #ffcc00; padding: 10px 20px; text-decoration: none; color: black; border-radius: 5px; font-weight: bold; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Привіт! Це мій сайт на GitHub</h1>
-        <p>Я створив цей файл власноруч.</p>
-        <button onclick="alert('Працює!')">Натисни мене</button>
+    <div class="container">
+        <h1>🍯 Пасіка: Продаж меду та бджіл</h1>
+        <p>Вітаємо! Тут ви можете замовити найкращий натуральний продукт.</p>
+        
+        <div class="product">
+            <h3>Мед акацієвий (1л)</h3>
+            <p>Ціна: 250 грн</p>
+        </div>
+
+        <div class="product">
+            <h3>Бджолопакети</h3>
+            <p>Ціна: за домовленістю</p>
+        </div>
+
+        <br><br>
+        <a href="https://t.me/твій_нік" class="btn">Написати в Telegram</a>
     </div>
 </body>
 </html>

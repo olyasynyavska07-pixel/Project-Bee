@@ -3,46 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golden Apiary — Світ Бджіл та Меду</title>
+    <title>Golden Apiary — Головна</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="top-bar">
-        <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" placeholder="Search goods..." class="search-input">
+    <header class="header">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search goods...">
         </div>
-        
-        <div class="logo-box">
-            <div class="logo-icon">🐝</div>
-            <div>
-                <h1 class="brand-name">Golden Apiary</h1>
-                <p class="tagline">The best honey and bees straight from the beekeeper</p>
+
+        <div class="logo-container">
+            <span class="logo-icon">🐝</span>
+            <div class="logo-text">
+                <h1>Golden Apiary</h1>
+                <p>The best honey and bees straight from the beekeeper</p>
             </div>
         </div>
 
         <button class="catalog-btn">Catalog of goods</button>
     </header>
 
-    <nav class="side-nav">
-        <ul>
-            <li><a href="index.html" class="active"><i class="fas fa-home"></i> Головна</a></li>
-            <li><a href="apiary.html"><i class="fas fa-seedling"></i> Про пасіку</a></li>
-            <li><a href="products.html"><i class="fas fa-jar"></i> Наш мед</a></li>
-            <li><a href="bees.html"><i class="fas fa-bug"></i> Бджоли</a></li>
-            <li><a href="about.html"><i class="fas fa-info-circle"></i> Про нас</a></li>
-            <li><a href="gallery.html"><i class="fas fa-images"></i> Галерея</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Контакти</a></li>
-        </ul>
-    </nav>
+    <div class="main-container">
+        <nav class="sidebar">
+            <a href="index.html" class="nav-button active"><i class="fas fa-home"></i></a>
+            <a href="#" class="nav-button"><i class="fas fa-seedling"></i></a>
+            <a href="#" class="nav-button"><i class="fas fa-jar"></i></a>
+            <a href="#" class="nav-button"><i class="fas fa-bug"></i></a>
+            <a href="#" class="nav-button"><i class="fas fa-info-circle"></i></a>
+            <a href="#" class="nav-button"><i class="fas fa-images"></i></a>
+            <a href="#" class="nav-button"><i class="fas fa-envelope"></i></a>
+        </nav>
 
-    <main class="main-content">
-        <h2>Вітаємо на нашій пасіці!</h2>
-        <p>Це головна сторінка. Виберіть розділ у меню зліва, щоб дізнатися більше.</p>
-        
+        <main class="content">
+            <h1>Вітаємо на нашій пасіці!</h1>
+            <p>Тут ви знайдете найкращий мед та бджіл породи Карпатка.</p>
+            <hr>
+            <p>Виберіть розділ зліва, щоб переглянути товари або контакти.</p>
         </main>
+    </div>
 
 </body>
 </html>

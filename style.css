@@ -1,133 +1,103 @@
-/* --- ОСНОВНІ НАЛАШТУВАННЯ --- */
+/* --- ОСНОВНІ СКИНУТТЯ ТА ЗМІННІ --- */
 :root {
-    --bg-color: #f7f7f7;
-    --main-yellow: #ffcc00;
-    --dark-green: #333d29;
-    --accent-green: #a7c957;
-    --accent-green-hover: #bde06a;
-    --text-color: #332200;
+    --bg-white: #ffffff;
+    --bg-gray: #f5f5f5;
+    --main-yellow: #f8db6c; /* Колір верхньої панелі */
+    --logo-green: #adb96a; /* Колір логотипу та кнопок */
+    --logo-green-hover: #c4d184; /* Колір при наведенні */
+    --sidebar-green: #3e4d3c; /* Колір бічної панелі */
+    --text-dark: #333333;
+    --text-muted: #666666;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--bg-white);
+    color: var(--text-dark);
     display: flex;
     min-height: 100vh;
 }
 
-/* --- ПРЕЛОАДЕР --- */
-#loader {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+/* --- ВЕРХНЯ ПАНЕЛЬ (Header) --- */
+.top-header {
     background-color: var(--main-yellow);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-}
-
-.bee-fly { 
-    font-size: 60px; 
-    animation: bounce 0.8s infinite alternate ease-in-out; 
-}
-
-.loader-text {
-    font-family: sans-serif;
-    font-weight: bold;
-    color: #4d3300;
-    margin-top: 15px;
-}
-
-@keyframes bounce { 
-    from { transform: translateY(0px); } 
-    to { transform: translateY(-25px); } 
-}
-
-#loader.hidden { opacity: 0; visibility: hidden; }
-
-/* --- ГОЛОВНА ПАНЕЛЬ (Хедер) --- */
-.main-header {
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(8px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    padding: 15px 30px;
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.header-logo {
+/* Ліва частина: Лого + Пошук */
+.header-left {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
 .logo-box {
-    background-color: var(--accent-green);
-    border-radius: 12px;
-    width: 60px; height: 60px;
+    background-color: var(--logo-green);
+    border-radius: 10px;
+    width: 50px; height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.3s;
-    border: 2px solid transparent;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .logo-box:hover {
-    background-color: var(--accent-green-hover);
-    transform: rotate(-10deg);
-    border-color: #bde06a;
+    transform: scale(1.1);
+    background-color: var(--logo-green-hover);
 }
 
 .logo-icon {
-    font-size: 30px;
+    font-size: 24px;
     color: white;
 }
 
-.search-box {
+.search-bar {
     display: flex;
     align-items: center;
-    background-color: rgba(0,0,0,0.05);
-    border-radius: 12px;
-    padding: 10px 15px;
-    width: 250px;
-    border: 2px solid transparent;
-    transition: 0.3s;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    padding: 8px 12px;
+    width: 220px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-.search-box:hover {
+.search-bar:hover,
+.search-bar:focus-within {
     background-color: white;
-    border-color: var(--accent-green);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-color: var(--logo-green);
 }
 
 .search-icon {
-    color: rgba(0,0,0,0.3);
+    color: var(--text-muted);
     margin-right: 10px;
+    font-size: 14px;
 }
 
-.search-box input {
+.search-bar input {
     background: transparent;
     border: none;
     outline: none;
-    font-size: 16px;
-    color: var(--text-color);
+    font-size: 14px;
+    color: var(--text-dark);
+    width: 100%;
 }
 
+/* Центр: Назва + Підзаголовок */
 .header-center {
     text-align: center;
 }
 
-.title-logo {
+.title-group {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,137 +105,115 @@ body {
 }
 
 .header-bee {
-    font-size: 40px;
-    color: var(--text-color);
-    animation: beeAnimation 2s infinite alternate;
-}
-
-@keyframes beeAnimation {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
+    font-size: 32px;
+    color: var(--text-dark);
 }
 
 .main-title {
-    font-size: 3.5em;
+    font-size: 2.5em;
     margin: 0;
-    color: var(--text-color);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    color: var(--text-dark);
 }
 
-.subtitle {
+.main-subtitle {
     margin: 5px 0 0;
-    font-size: 1.1em;
-    color: #664400;
+    font-size: 0.95em;
+    color: var(--text-muted);
 }
 
+/* Права частина: Кнопка Каталог */
 .header-right {
     display: flex;
     align-items: center;
 }
 
-.catalog-btn {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: var(--accent-green);
+.catalog-button {
+    background-color: var(--logo-green);
     color: white;
-    padding: 15px 30px;
-    border-radius: 50px;
+    padding: 12px 24px;
+    border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.1em;
-    transition: 0.3s;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     border: 2px solid transparent;
 }
 
-.catalog-btn:hover {
-    background-color: var(--accent-green-hover);
-    transform: scale(1.05);
-    border-color: #bde06a;
+.catalog-button:hover {
+    background-color: var(--logo-green-hover);
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
-.catalog-arrow {
-    transition: 0.3s;
-}
-
-.catalog-btn:hover .catalog-arrow {
-    transform: translateX(5px);
-}
-
-/* --- БІЧНА ПАНЕЛЬ --- */
-.side-panel {
-    background-color: var(--dark-green);
-    width: 100px;
-    padding: 100px 0 30px; /* Відступи, щоб хедер не заважав */
+/* --- БІЧНА ПАНЕЛЬ (Sidebar) --- */
+.side-navigation {
+    background-color: var(--sidebar-green);
+    width: 80px;
+    padding: 120px 10px 30px; /* Відступи під хедер */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     position: fixed;
     top: 0; left: 0; bottom: 0;
     z-index: 500;
-    box-shadow: 4px 0 20px rgba(0,0,0,0.1);
 }
 
-.panel-box {
-    width: 60px; height: 60px;
-    border-radius: 12px;
+.nav-item {
+    width: 50px; height: 50px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.3s;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.home-box {
-    background-color: var(--accent-green);
-    border: 2px solid transparent;
+/* Кнопка Home */
+.home-item {
+    background-color: var(--logo-green);
 }
 
-.home-box:hover {
-    background-color: var(--accent-green-hover);
+.home-item:hover {
+    background-color: var(--logo-green-hover);
     transform: scale(1.1);
-    border-color: #bde06a;
 }
 
 .home-icon {
-    font-size: 25px;
+    font-size: 20px;
     color: white;
 }
 
-.empty-box {
-    background-color: var(--bg-color);
-    transition: 0.3s;
+/* Порожні кнопки */
+.empty-item {
+    background-color: var(--main-yellow); /* Колір порожніх боксів з фото */
 }
 
-.empty-box:hover {
-    background-color: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+.empty-item:hover {
+    background-color: #ffe580; /* Трохи світліше при наведенні */
+    transform: scale(1.05);
 }
 
 /* Клас для активної вкладки */
-.panel-box.active {
-    box-shadow: 0 0 10px var(--accent-green);
+.nav-item.active {
+    box-shadow: 0 0 10px var(--logo-green);
 }
 
-/* --- ОСНОВНИЙ КОНТЕНТ --- */
-.content-area {
+/* --- ОСНОВНИЙ КОНТЕНТ (Content) --- */
+.main-content {
     flex-grow: 1;
-    margin-left: 100px; /* Відступ під бічну панель */
-    margin-top: 150px; /* Відступ під хедер */
+    margin-left: 80px; /* Відступ під бічну панель */
+    margin-top: 130px; /* Відступ під хедер */
     padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.main-placeholder {
+.placeholder-text {
+    font-size: 2em;
+    color: #cccccc;
     text-align: center;
-    font-size: 1.5em;
-    color: #886600;
-    padding: 80px 0;
-    animation: fadeIn 1s;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 @keyframes fadeIn {

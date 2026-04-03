@@ -1,96 +1,136 @@
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
     display: flex;
-    background-color: #fdfdfd;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
 }
 
-/* Бічна панель (Sidebar) */
-.sidebar {
-    width: 80px;
+/* Бічна панель */
+.side-menu {
+    width: 70px;
     height: 100vh;
-    background-color: #6d7652; /* Оливковий колір з макету */
+    background-color: #6b704c; /* Оливковий колір */
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 10px;
     position: fixed;
 }
 
-.nav-item {
+.menu-item {
     width: 50px;
     height: 50px;
-    background-color: #e2e171; /* Жовтий колір кнопок */
-    margin: 10px 0;
-    border-radius: 8px;
+    background-color: #d9da70;
+    margin-bottom: 10px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
-    font-size: 20px;
-    transition: 0.3s;
-}
-
-.nav-item:hover {
-    background-color: #f7f6a8;
-    transform: scale(1.05);
-}
-
-/* Основна частина */
-.main-container {
-    margin-left: 80px;
-    flex-grow: 1;
-}
-
-header {
-    background-color: #fef08a; /* Світло-жовтий фон шапки */
-    padding: 15px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #e2e171;
-}
-
-.search-bar input {
-    padding: 8px 15px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    width: 250px;
-}
-
-.main-logo {
-    text-align: center;
-}
-
-.logo-box {
-    background: white;
-    padding: 10px 30px;
-    border-radius: 10px;
-    border: 4px solid #facc15;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.logo-box h1 {
-    margin: 0;
-    color: #444;
-    font-style: italic;
-}
-
-.logo-box p {
-    margin: 0;
-    font-size: 12px;
-    color: #666;
-}
-
-.catalog-btn {
-    background-color: #e2e171;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 15px;
-    font-weight: bold;
+    font-size: 24px;
     cursor: pointer;
 }
 
-.content {
-    padding: 40px;
+.menu-item.active {
+    background-color: #d9da70;
+}
+
+/* Контейнер для всього, що справа від меню */
+.wrapper {
+    margin-left: 70px;
+    width: 100%;
+}
+
+/* ШАПКА САЙТУ */
+.apiary-header {
+    background-color: #fff176; /* Світло-жовтий фон */
+    height: 120px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    gap: 20px;
+}
+
+.mini-logo {
+    background-color: #d9da70;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 22px;
+}
+
+.search-container {
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    width: 280px;
+}
+
+.search-container input {
+    border: none;
+    background: transparent;
+    outline: none;
+    margin-left: 10px;
+    width: 100%;
+    font-style: italic;
+}
+
+.center-brand {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Центральна табличка з рамкою */
+.brand-box {
+    background-color: #fef987;
+    border: 7px solid #facc15; /* Товста жовта рамка */
+    border-radius: 15px;
+    padding: 10px 30px;
     text-align: center;
+}
+
+.brand-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.brand-title h1 {
+    margin: 0;
+    font-size: 42px;
+    font-style: italic;
+    color: #5d5d5d;
+    font-family: "Times New Roman", serif;
+}
+
+.bee-icon {
+    font-size: 40px;
+}
+
+.brand-subtitle {
+    margin: 0;
+    font-size: 13px;
+    font-style: italic;
+    color: #444;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* Кнопка каталогу */
+.catalog-button {
+    background-color: #d9da70;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.catalog-button:hover {
+    background-color: #c4c560;
 }

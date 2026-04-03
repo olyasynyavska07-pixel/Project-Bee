@@ -1,72 +1,59 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golden Apiary — Офіційний сайт</title>
+    <title>Golden Apiary — Каталог</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="loader">
-        <div class="bee-fly">🐝</div>
-        <div class="loader-text">Golden Apiary...</div>
-    </div>
-
-    <header class="main-header">
-        <div class="header-logo">
+    <header class="top-header">
+        <div class="header-left">
             <div class="logo-box">
                 <i class="fas fa-bee logo-icon"></i>
             </div>
-            <div class="search-box">
+            <div class="search-bar">
                 <i class="fas fa-search search-icon"></i>
                 <input type="text" placeholder="Search goods...">
             </div>
         </div>
+        
         <div class="header-center">
-            <div class="title-logo">
+            <div class="title-group">
                 <i class="fas fa-bee header-bee"></i>
                 <h1 class="main-title">Golden Apiary</h1>
             </div>
-            <p class="subtitle">The best honey and bees straight from the beekeeper</p>
+            <p class="main-subtitle">The best honey and bees straight from the beekeeper</p>
         </div>
+
         <div class="header-right">
-            <a href="#" class="catalog-btn">
-                Catalog of goods
-                <i class="fas fa-chevron-right catalog-arrow"></i>
-            </a>
+            <a href="#" class="catalog-button">Catalog of goods</a>
         </div>
     </header>
 
-    <aside class="side-panel">
-        <div class="panel-box home-box active">
+    <aside class="side-navigation">
+        <div class="nav-item home-item active">
             <i class="fas fa-home home-icon"></i>
         </div>
-        <div class="panel-box empty-box"></div>
-        <div class="panel-box empty-box"></div>
-        <div class="panel-box empty-box"></div>
-        <div class="panel-box empty-box"></div>
-        <div class="panel-box empty-box"></div>
-        <div class="panel-box empty-box"></div>
-    </index-aside>
+        
+        <div class="nav-item empty-item"></div>
+        <div class="nav-item empty-item"></div>
+        <div class="nav-item empty-item"></div>
+        <div class="nav-item empty-item"></div>
+        <div class="nav-item empty-item"></div>
+        <div class="nav-item empty-item"></div>
+        <div class="nav-item empty-item"></div>
+    </aside>
 
-    <main class="content-area">
+    <main class="main-content">
         <div class="container">
-            <div class="main-placeholder">
-                <p>Welcome to Golden Apiary!</p>
-                <p>Here you can find and buy the best natural products from our honey factory.</p>
-                <p>Feel the taste of real nature.</p>
+            <div class="placeholder-text">
+                Welcome to Golden Apiary! Your natural honey factory.
             </div>
         </div>
     </main>
 
-    <script>
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 800);
-        });
-    </script>
 </body>
 </html>

@@ -6,88 +6,48 @@ body {
 
 /* ВЕРХНЯ ПАНЕЛЬ */
 .main-header {
-    background-color: #FDE86B;
+    background-color: #FDE86B; /* Основний жовтий */
     height: 110px;
     display: flex;
     align-items: center;
-    padding: 0 40px;
+    padding: 0 20px;
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 1000;
 }
 
-/* Ліва секція */
-.header-left-section {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex: 1; /* Займає місце зліва */
-}
-
-/* ЦЕНТРАЛЬНА СЕКЦІЯ - Тепер вона посунута лівіше */
-.header-center-section {
-    text-align: center;
-    flex: 2; 
-    margin-right: 150px; /* Ось цей відступ соває заголовок вліво */
-}
-
-.logo-title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.header-left { 
+    display: flex; 
+    align-items: center; 
     gap: 15px;
+    width: 300px; /* Фіксуємо ширину зліва */
 }
 
-.logo-title h1 {
-    margin: 0;
-    font-size: 38px;
-    color: #333;
-    font-weight: 800;
-}
-
-.big-bee { font-size: 45px; }
-
-.header-center-section p {
-    margin: 5px 0 0;
-    font-size: 14px;
-    color: #555;
-}
-
-/* Права секція */
-.header-right-section {
-    flex: 1;
+/* ЦЕНТРАЛЬНИЙ БЛОК — ТЕПЕР КОМПАКТНИЙ */
+.header-center-card {
+    background-color: #FFF176; /* Світліший жовтий всередині */
+    border: 6px solid #FBC02D;  /* Товста жовта рамка як на макеті */
+    border-radius: 15px;
+    padding: 5px 30px;
+    width: fit-content;        /* Стискає блок по ширині тексту */
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;         /* Посунули ближче до пошуку */
 }
 
-.mini-logo {
-    background: #ADB96C;
-    width: 50px; height: 50px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 30px;
-}
+.logo-title { display: flex; align-items: center; gap: 10px; }
+.logo-title h1 { margin: 0; font-size: 32px; color: #444; }
+.big-bee { font-size: 35px; }
+.header-center-card p { margin: 0; font-size: 13px; color: #666; }
 
-.search-box {
-    background: #FDF9E7; /* Світліший жовтий для пошуку */
-    padding: 10px 15px;
-    border-radius: 10px;
-    display: flex; align-items: center; gap: 10px;
-    width: 250px;
-}
-
-.search-box input {
-    border: none;
-    background: transparent;
-    outline: none;
-    width: 100%;
-}
-
+/* КНОПКА СПРАВА */
+.header-right { margin-left: auto; }
 .btn-catalog {
     background: #ADB96C;
     border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
+    padding: 10px 20px;
+    border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -101,8 +61,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 25px;
-    gap: 15px;
+    padding-top: 20px;
+    gap: 12px;
 }
 
 .side-item {
@@ -110,13 +70,26 @@ body {
     background: #FDE86B;
     border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
 }
 
 .side-item.active {
     background: #E2EB9E;
     border: 2px solid white;
-    color: #333;
 }
 
-.side-item i { font-size: 24px; }
+.mini-logo {
+    background: #ADB96C;
+    width: 45px; height: 45px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 25px;
+}
+
+.search-box {
+    background: #E0E0E0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex; align-items: center; gap: 8px;
+}
+
+.search-box input { border: none; background: transparent; outline: none; width: 150px; }

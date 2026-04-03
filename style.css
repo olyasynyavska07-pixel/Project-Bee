@@ -1,159 +1,64 @@
-/* --- ОСНОВНІ СКИНУТТЯ ТА ЗМІННІ --- */
-:root {
-    --bg-light: #ffffff;
-    --main-yellow: #fde86b; /* Колір верхньої панелі */
-    --logo-green: #adb96c; /* Колір логотипу та кнопок */
-    --logo-green-hover: #c4cf84; /* Колір при наведенні */
-    --text-dark: #333333;
-    --text-muted: #666666;
+/* --- СТИЛІ ДЛЯ БДЖІЛОК --- */
+.bee-img-small {
+    width: 35px;
+    height: auto;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-light);
-    color: var(--text-dark);
+.bee-img-big {
+    width: 55px;
+    height: auto;
+    margin-right: 15px;
 }
 
-/* --- ВЕРХНЯ ПАНЕЛЬ (Top Bar) --- */
-.top-bar {
-    background-color: var(--main-yellow);
+/* --- ТВОЯ БІЧНА ПАНЕЛЬ (SIDEBAR) --- */
+.side-nav {
+    position: fixed;
+    top: 100px; /* Відступ від хедера */
+    left: 0;
+    width: 90px;
+    bottom: 0;
+    background-color: #5B634B; /* Темно-зелений як на фото */
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 15px 40px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-}
-
-/* Ліва частина: Лого + Пошук */
-.top-bar-left {
-    display: flex;
-    align-items: center;
+    padding-top: 20px;
     gap: 15px;
 }
 
-.logo-box {
-    background-color: var(--logo-green);
-    border-radius: 10px;
-    width: 50px; height: 50px;
+.nav-button {
+    width: 65px;
+    height: 55px;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    background-color: #CDDC89; /* Світло-зелений */
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.logo-box:hover {
-    transform: scale(1.1);
-    background-color: var(--logo-green-hover);
+.nav-button.active {
+    background-color: #E8F0A1;
+    border: 2px solid white;
 }
 
-.logo-icon {
-    font-size: 24px;
-    color: white;
+.nav-button.empty {
+    background-color: #FDE86B; /* Жовтий як на фото */
 }
 
-.search-field {
+.nav-button:hover {
+    transform: scale(1.05);
+}
+
+/* Вирівнювання хедера */
+.top-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 100px;
+    background-color: #FDE86B;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
-    padding: 8px 12px;
-    width: 250px;
-    border: 1px solid transparent;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-.search-field:hover,
-.search-field:focus-within {
-    background-color: white;
-    border-color: var(--logo-green);
-}
-
-.search-icon {
-    color: var(--text-muted);
-    margin-right: 10px;
-    font-size: 14px;
-}
-
-.search-field input {
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 14px;
-    color: var(--text-dark);
-    width: 100%;
-}
-
-/* Центр: Назва + Підзаголовок */
-.top-bar-center {
-    text-align: center;
-}
-
-.title-with-bee {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.title-bee {
-    font-size: 32px;
-    color: var(--text-dark);
-}
-
-.main-title {
-    font-size: 2.5em;
-    margin: 0;
-    color: var(--text-dark);
-}
-
-.main-subtitle {
-    margin: 5px 0 0;
-    font-size: 0.95em;
-    color: var(--text-muted);
-}
-
-/* Права частина: Кнопка Каталог */
-.top-bar-right {
-    display: flex;
-    align-items: center;
-}
-
-.catalog-btn {
-    background-color: var(--logo-green);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.catalog-btn:hover {
-    background-color: var(--logo-green-hover);
-    transform: translateY(-3px);
-}
-    to { opacity: 1; }
-}
-/* Стилі для нових картинок бджіл */
-
-/* Маленька бджілка в логотипі */
-.bee-logo-img {
-    width: 35px;  /* Ширина */
-    height: auto; /* Висота підлаштовується автоматично */
-    transition: transform 0.3s ease; /* Плавний ефект */
-}
-
-/* Ефект при наведенні на лого */
-.logo-box:hover .bee-logo-img {
-    transform: scale(1.1) rotate(-10deg); /* Збільшується і повертається */
-}
-
-/* Велика бджілка біля заголовка */
-.bee-title-img {
-    width: 50px;  /* Ширина */
-    height: auto;
-    margin-right: 10px; /* Відступ до тексту */
+    padding: 0 30px;
+    z-index: 1000;
 }

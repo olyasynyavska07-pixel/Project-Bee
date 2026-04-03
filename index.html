@@ -3,45 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golden Apiary</title>
+    <title>Golden Apiary — Світ Бджіл та Меду</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="header-left">
-            <div class="mini-logo">🐝</div>
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search goods...">
-            </div>
+    <header class="top-bar">
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Search goods..." class="search-input">
         </div>
         
-        <div class="header-center-card">
-            <div class="logo-title">
-                <span class="big-bee">🐝</span>
-                <h1>Golden Apiary</h1>
+        <div class="logo-box">
+            <div class="logo-icon">🐝</div>
+            <div>
+                <h1 class="brand-name">Golden Apiary</h1>
+                <p class="tagline">The best honey and bees straight from the beekeeper</p>
             </div>
-            <p>The best honey and bees straight from the beekeeper</p>
         </div>
 
-        <div class="header-right">
-            <button class="btn-catalog">Catalog of goods</button>
-        </div>
+        <button class="catalog-btn">Catalog of goods</button>
     </header>
 
-    <aside class="left-sidebar">
-        <div class="side-item active">
-            <i class="fas fa-home"></i>
-        </div>
-        <div class="side-item yellow"></div>
-        <div class="side-item yellow"></div>
-        <div class="side-item yellow"></div>
-        <div class="side-item yellow"></div>
-        <div class="side-item yellow"></div>
-        <div class="side-item yellow"></div>
-    </aside>
+    <nav class="side-nav">
+        <ul>
+            <li><a href="index.html" class="active"><i class="fas fa-home"></i> Головна</a></li>
+            <li><a href="apiary.html"><i class="fas fa-seedling"></i> Про пасіку</a></li>
+            <li><a href="products.html"><i class="fas fa-jar"></i> Наш мед</a></li>
+            <li><a href="bees.html"><i class="fas fa-bug"></i> Бджоли</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> Про нас</a></li>
+            <li><a href="gallery.html"><i class="fas fa-images"></i> Галерея</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Контакти</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <h2>Вітаємо на нашій пасіці!</h2>
+        <p>Це головна сторінка. Виберіть розділ у меню зліва, щоб дізнатися більше.</p>
+        
+        </main>
 
 </body>
 </html>

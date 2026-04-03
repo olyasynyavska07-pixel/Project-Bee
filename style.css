@@ -3,9 +3,10 @@ body {
     padding: 0;
     display: flex;
     font-family: 'Arial', sans-serif;
+    background-color: #fff;
 }
 
-/* БІЧНЕ МЕНЮ */
+/* ОЛИВКОВЕ МЕНЮ */
 .sidebar {
     width: 70px;
     height: 100vh;
@@ -31,9 +32,9 @@ body {
     font-size: 24px;
 }
 
-/* ГОЛОВНИЙ КОНТЕЙНЕР */
+/* КОНТЕЙНЕР ДЛЯ ШАПКИ */
 .wrapper {
-    margin-left: 70px;
+    margin-left: 70px; /* Місце під меню */
     width: calc(100% - 70px);
 }
 
@@ -48,27 +49,18 @@ body {
     box-sizing: border-box;
 }
 
-/* ТРИ РІВНІ СЕКЦІЇ */
 .section {
     display: flex;
     align-items: center;
-    flex: 1;
+    flex: 1; /* Ділимо шапку на 3 рівні зони */
 }
 
-.section.left { 
-    justify-content: flex-start; 
-    gap: 15px; 
-}
+/* ПОЗИЦІОНУВАННЯ СЕКЦІЙ */
+.section.left { justify-content: flex-start; gap: 15px; }
+.section.center { justify-content: center; }
+.section.right { justify-content: flex-end; }
 
-.section.center { 
-    justify-content: center; 
-}
-
-.section.right { 
-    justify-content: flex-end; 
-}
-
-/* ПОШУК (Опущений трохи вниз) */
+/* ПОШУК (ТРОХИ ВНИЗУ) */
 .search-bar {
     background-color: #e5e5e5;
     border-radius: 20px;
@@ -76,7 +68,7 @@ body {
     align-items: center;
     padding: 8px 15px;
     width: 210px;
-    margin-top: 25px; /* Ось воно, по чіназику внизу */
+    margin-top: 25px; /* Опускаємо по чіназику */
 }
 
 .search-bar input {
@@ -94,8 +86,8 @@ body {
     font-size: 22px;
 }
 
-/* ЛОГОТИП (Центральна рамка) */
-.logo-box {
+/* ЦЕНТРАЛЬНИЙ БЛОК */
+.brand-box {
     background-color: #fef987;
     border: 7px solid #facc15;
     border-radius: 15px;
@@ -104,14 +96,14 @@ body {
     min-width: 320px;
 }
 
-.logo-row {
+.brand-main {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
 }
 
-.logo-row h1 {
+.brand-main h1 {
     margin: 0;
     font-size: 38px;
     font-style: italic;
@@ -125,7 +117,7 @@ body {
     font-weight: bold;
 }
 
-/* КАТАЛОГ (Посунутий трохи вліво) */
+/* КАТАЛОГ (ТРОХИ ВЛІВО) */
 .catalog-btn {
     background-color: #d9db72;
     border: 2px solid #333;
@@ -134,5 +126,5 @@ body {
     font-weight: bold;
     font-style: italic;
     cursor: pointer;
-    margin-right: 50px; /* Посунули вліво від краю */
+    margin-right: 50px; /* Відсуваємо від правого краю */
 }

@@ -2,160 +2,120 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
-body {
-    background-color: #fff;
-}
-
-/* --- ОНОВЛЕНА ШАПКА --- */
+/* ШАПКА */
 .header {
-    background-color: #FFFFAD; /* Світло-жовтий фон */
-    display: flex;
-    justify-content: space-between; /* Розподіляє елементи по краях і центру */
-    align-items: center;
-    padding: 0 40px; /* Відступи по краях */
-    height: 120px; /* Трохи збільшили висоту для рамки */
-    position: relative;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-/* Ліва та права частини шапки */
-.header-left, .header-right {
-    flex: 1; /* Займають однакову площу, щоб центр був точно по центру */
+    background-color: #FFFFAD;
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Розставляє ліво-центр-право */
+    padding: 10px 30px;
+    height: 140px;
+    border-bottom: 1px solid #ddd;
 }
 
-.header-right {
-    justify-content: flex-end; /* Кнопка притиснута праворуч */
+/* Секції всередині шапки */
+.nav-section {
+    flex: 1; /* Робить всі три секції рівними за шириною */
+    display: flex;
+    align-items: center;
+}
+
+.nav-section.center {
+    justify-content: center; /* Центрує логотип */
+}
+
+.nav-section.right {
+    justify-content: flex-end; /* Притискає кнопку до правого краю */
 }
 
 /* Пошук */
 .search-bar {
-    background-color: #EAEAEA;
-    border-radius: 20px;
+    background: #EAEAEA;
     padding: 8px 15px;
+    border-radius: 20px;
     display: flex;
     align-items: center;
-    width: 280px;
-}
-
-.search-bar i {
-    color: #606060;
+    width: 250px;
 }
 
 .search-bar input {
-    background: none;
     border: none;
+    background: none;
     outline: none;
-    padding-left: 10px;
+    margin-left: 8px;
     width: 100%;
-    font-size: 14px;
 }
+
+/* Логотип */
+.logo-card {
+    background: #FFDF00;
+    border: 6px solid #FFD700;
+    padding: 10px 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.logo-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logo-main i { font-size: 28px; color: #414227; }
+.logo-main h1 { font-style: italic; font-size: 28px; color: #414227; }
+.logo-card p { font-style: italic; font-size: 10px; color: #414227; margin-top: 4px; }
 
 /* Кнопка каталогу */
 .catalog-btn {
-    background-color: #CBDC6E;
+    background: #CBDC6E;
     color: #414227;
     border: none;
-    padding: 10px 25px;
-    border-radius: 20px;
-    font-style: italic;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: background-color 0.2s;
-}
-
-.catalog-btn:hover {
-    background-color: #b9cd5c;
-}
-
-/* Центральна частина: Логотип у рамці */
-.header-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo-card {
-    background-color: #FFDF00; /* Яскраво-жовта рамка */
-    padding: 15px 30px;
+    padding: 10px 20px;
     border-radius: 15px;
-    border: 5px solid #F0D000; /* Товста жовта рамка */
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.logo-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px; /* Відступ між іконкою та текстом */
-    margin-bottom: 5px;
-}
-
-.logo-icon {
-    font-size: 30px;
-    color: #414227;
-}
-
-.logo-card h1 {
-    font-style: italic;
-    font-size: 32px;
-    color: #414227;
     font-weight: bold;
-}
-
-.tagline {
     font-style: italic;
-    font-size: 11px;
-    color: #414227;
-    margin-top: 5px;
+    cursor: pointer;
 }
 
-/* --- Основна частина (залишається без змін) --- */
-.main-layout {
+/* ОСНОВНА ЧАСТИНА */
+.main-container {
     display: flex;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 140px);
 }
 
 .sidebar {
-    background-color: #6D775C; /* Темно-зелений фон */
+    background: #6D775C;
     width: 80px;
+    padding: 20px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
     gap: 15px;
 }
 
-.nav-btn {
+.side-item {
     width: 50px;
     height: 50px;
-    background-color: #CBDC6E;
+    background: #CBDC6E;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #414227;
     text-decoration: none;
-    transition: 0.3s;
+    color: #414227;
+    transition: 0.2s;
 }
 
-.nav-btn:hover {
-    background-color: #e2f096;
-    transform: scale(1.05);
-}
-
-.nav-btn.active {
-    background-color: #FFFFAD;
-}
+.side-item.active { background: #FFFFAD; }
+.side-item:hover { transform: scale(1.1); }
 
 .content {
-    padding: 50px;
     flex: 1;
+    padding: 40px;
+    background: #fff;
 }

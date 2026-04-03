@@ -3,51 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Золота Пасіка - Golden Apiary</title>
+    <title>Golden Apiary</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="header">
-        <div class="header-content">
-            <div class="logo-area">
-                <img src="icon.png" alt="Бджола Лого" class="apiary-logo-img">
-                <div class="logo-text">
-                    <h1>Golden Apiary</h1>
-                    <p class="tagline">The best honey and bees straight from the beekeeper</p>
-                </div>
+        <div class="logo-block">
+            <div class="logo-box">
+                <i class="fas fa-bee"></i>
+                <h1>Golden Apiary</h1>
+                <p>The best honey and bees straight from the beekeeper</p>
             </div>
-
-            <div class="action-area">
-                <div class="search-bar">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" placeholder="Search goods...">
-                </div>
-                <button class="catalog-btn">Catalog of goods</button>
+        </div>
+        
+        <div class="search-section">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search goods...">
             </div>
+            <button class="catalog-btn">Catalog of goods</button>
         </div>
     </header>
 
-    <main class="main-container">
+    <div class="main-layout">
         <nav class="sidebar">
-            <ul>
-                <li class="active"><a href="#"><i class="fas fa-home"></i></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-            </ul>
+            <a href="#" class="nav-btn active"><i class="fas fa-home"></i></a>
+            <a href="#" class="nav-btn"></a>
+            <a href="#" class="nav-btn"></a>
+            <a href="#" class="nav-btn"></a>
+            <a href="#" class="nav-btn"></a>
+            <a href="#" class="nav-btn"></a>
+            <a href="#" class="nav-btn"></a>
         </nav>
 
-        <article class="content-area">
+        <main class="content">
             <h2>Ласкаво просимо до Золотої Пасіки!</h2>
             <p>Оберіть категорію ліворуч або скористайтеся пошуком.</p>
-        </article>
-    </main>
+        </main>
+    </div>
 
 </body>
 </html>

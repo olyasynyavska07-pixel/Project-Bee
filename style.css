@@ -6,22 +6,62 @@ body {
 
 /* ВЕРХНЯ ПАНЕЛЬ */
 .main-header {
-    background-color: #FDE86B; /* Твій жовтий */
+    background-color: #FDE86B;
     height: 110px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 30px;
+    padding: 0 40px;
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.header-left { display: flex; align-items: center; gap: 20px; }
+/* Ліва секція */
+.header-left-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1; /* Займає місце зліва */
+}
+
+/* ЦЕНТРАЛЬНА СЕКЦІЯ - Тепер вона посунута лівіше */
+.header-center-section {
+    text-align: center;
+    flex: 2; 
+    margin-right: 150px; /* Ось цей відступ соває заголовок вліво */
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.logo-title h1 {
+    margin: 0;
+    font-size: 38px;
+    color: #333;
+    font-weight: 800;
+}
+
+.big-bee { font-size: 45px; }
+
+.header-center-section p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Права секція */
+.header-right-section {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
 
 .mini-logo {
-    background: #ADB96C; /* Зелений фон для бджоли */
+    background: #ADB96C;
     width: 50px; height: 50px;
     border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
@@ -29,19 +69,19 @@ body {
 }
 
 .search-box {
-    background: #F0F0F0;
+    background: #FDF9E7; /* Світліший жовтий для пошуку */
     padding: 10px 15px;
     border-radius: 10px;
     display: flex; align-items: center; gap: 10px;
+    width: 250px;
 }
 
-.search-box input { border: none; background: transparent; outline: none; width: 180px; }
-
-.header-center { text-align: center; }
-.logo-title { display: flex; align-items: center; justify-content: center; gap: 15px; }
-.logo-title h1 { margin: 0; font-size: 38px; color: #333; font-weight: 800; }
-.big-bee { font-size: 45px; }
-.header-center p { margin: 5px 0 0; font-size: 14px; color: #555; font-style: italic; }
+.search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+}
 
 .btn-catalog {
     background: #ADB96C;
@@ -50,14 +90,11 @@ body {
     border-radius: 25px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
 }
-
-.btn-catalog:hover { background: #c4cf84; }
 
 /* БІЧНА ПАНЕЛЬ */
 .left-sidebar {
-    background-color: #4A543A; /* Темно-зелений */
+    background-color: #4A543A;
     width: 90px;
     position: fixed;
     top: 110px; left: 0; bottom: 0;
@@ -66,24 +103,20 @@ body {
     align-items: center;
     padding-top: 25px;
     gap: 15px;
-    z-index: 999;
 }
 
 .side-item {
     width: 65px; height: 55px;
-    background: #C4CF84;
+    background: #FDE86B;
     border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 24px;
     cursor: pointer;
 }
 
-.side-item.active { background: #E2EB9E; border: 2px solid white; }
-.side-item.yellow { background: #FDE86B; }
-
-/* ОБЛАСТЬ КОНТЕНТУ */
-.page-content {
-    margin-top: 110px;
-    margin-left: 90px;
-    padding: 40px;
+.side-item.active {
+    background: #E2EB9E;
+    border: 2px solid white;
+    color: #333;
 }
+
+.side-item i { font-size: 24px; }

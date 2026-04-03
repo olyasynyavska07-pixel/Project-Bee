@@ -3,48 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golden Apiary</title>
+    <title>Золота Пасіка - Golden Apiary</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="header">
-        <div class="left-section">
-            <button class="bee-btn-small">🐝</button>
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search goods...">
+        <div class="header-content">
+            <div class="logo-area">
+                <img src="icon.png" alt="Бджола Лого" class="apiary-logo-img">
+                <div class="logo-text">
+                    <h1>Golden Apiary</h1>
+                    <p class="tagline">The best honey and bees straight from the beekeeper</p>
+                </div>
+            </div>
+
+            <div class="action-area">
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search goods...">
+                </div>
+                <button class="catalog-btn">Catalog of goods</button>
             </div>
         </div>
-
-        <div class="logo-container">
-            <span class="logo-bee">🐝</span>
-            <div class="logo-text">
-                <h1>Golden Apiary</h1>
-                <p>The best honey and bees straight from the beekeeper</p>
-            </div>
-        </div>
-
-        <button class="catalog-btn">Catalog of goods</button>
     </header>
 
-    <div class="main-layout">
+    <main class="main-container">
         <nav class="sidebar">
-            <a href="#" class="nav-item active"><i class="fas fa-home"></i></a>
-            <a href="#" class="nav-item"><i class="fas fa-seedling"></i></a>
-            <a href="#" class="nav-item"><i class="fas fa-jar"></i></a>
-            <a href="#" class="nav-item"><i class="fas fa-bug"></i></a>
-            <a href="#" class="nav-item"><i class="fas fa-info-circle"></i></a>
-            <a href="#" class="nav-item"><i class="fas fa-images"></i></a>
-            <a href="#" class="nav-item"><i class="fas fa-envelope"></i></a>
+            <ul>
+                <li class="active"><a href="#"><i class="fas fa-home"></i></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
         </nav>
 
-        <main class="content">
-            <h2>Вітаємо на нашій пасіці!</h2>
-            <p>Тепер структура та стилі розділені правильно.</p>
-        </main>
-    </div>
+        <article class="content-area">
+            <h2>Ласкаво просимо до Золотої Пасіки!</h2>
+            <p>Оберіть категорію ліворуч або скористайтеся пошуком.</p>
+        </article>
+    </main>
 
 </body>
 </html>

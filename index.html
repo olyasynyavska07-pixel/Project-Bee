@@ -2,60 +2,212 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golden Apiary</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Golden Apiary - Чиназики Edition</title>
+    <style>
+        /* ВБУДОВАНИЙ CSS - щоб нічого не злітало */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+        }
+
+        /* Бічна панель */
+        .sidebar {
+            width: 70px;
+            height: 100vh;
+            background-color: #6d744e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 15px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
+
+        .side-btn {
+            width: 50px;
+            height: 50px;
+            background-color: #d9db72;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .side-btn:hover { background-color: #e2e48b; transform: scale(1.1); }
+
+        /* Основна частина */
+        .wrapper {
+            margin-left: 70px;
+            width: calc(100% - 70px);
+        }
+
+        /* Жовта шапка */
+        .apiary-header {
+            background-color: #fef08a;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-sizing: border-box;
+            border-bottom: 2px solid #fde047;
+        }
+
+        .section { display: flex; align-items: center; flex: 1; }
+        .section.left { justify-content: flex-start; gap: 15px; }
+        .section.center { justify-content: center; }
+        .section.right { justify-content: flex-end; }
+
+        /* ПОШУК (Трохи внизу по чіназику) */
+        .search-box {
+            background-color: #f3f4f6;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            width: 240px;
+            margin-top: 35px; /* Ось воно опускається */
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        .mini-bee-icon {
+            background-color: #d9db72;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 22px;
+        }
+
+        /* ЦЕНТР - ЛОГО */
+        .brand-plate {
+            background-color: #fef987;
+            border: 6px solid #facc15;
+            border-radius: 20px;
+            padding: 15px 40px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-plate h1 {
+            margin: 0;
+            font-size: 42px;
+            font-style: italic;
+            color: #374151;
+            font-weight: 800;
+        }
+
+        .brand-plate p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4b5563;
+        }
+
+        /* КАТАЛОГ (Трохи вліво) */
+        .catalog-btn {
+            background-color: #d9db72;
+            border: 2px solid #4b5563;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-style: italic;
+            cursor: pointer;
+            margin-right: 70px; /* Посунули вліво */
+            transition: all 0.3s;
+        }
+
+        .catalog-btn:hover {
+            background-color: #c9cc60;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Контент */
+        .content-area {
+            padding: 50px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
     <div class="sidebar">
-        <div class="side-btn" id="home-btn" title="Головна">🏠</div>
-        <div class="side-btn" title="Мед">🍯</div>
-        <div class="side-btn" title="Бджоли">🐝</div>
-        <div class="side-btn"></div>
-        <div class="side-btn"></div>
-        <div class="side-btn"></div>
-        <div class="side-btn"></div>
+        <div class="side-btn" onclick="goHome()">🏠</div>
+        <div class="side-btn">🍯</div>
+        <div class="side-btn">🐝</div>
+        <div class="side-btn">📦</div>
     </div>
 
     <div class="wrapper">
         <header class="apiary-header">
             <div class="section left">
-                <div class="mini-bee-box">🐝</div>
-                <div class="search-wrap">
-                    <span id="search-icon" style="cursor: pointer;">🔍</span>
-                    <input type="text" id="search-field" placeholder="Search goods...">
+                <div class="mini-bee-icon">🐝</div>
+                <div class="search-box">
+                    <span style="cursor:pointer" onclick="startSearch()">🔍</span>
+                    <input type="text" id="searchInput" placeholder="Search goods...">
                 </div>
             </div>
 
             <div class="section center">
-                <div class="main-logo-plate">
-                    <div class="logo-top">
-                        <span class="bee-emoji">🐝</span>
-                        <h1>Golden Apiary</h1>
-                    </div>
-                    <p class="tagline">The best honey and bees straight from the beekeeper</p>
+                <div class="brand-plate">
+                    <h1>🐝 Golden Apiary</h1>
+                    <p>The best honey and bees straight from the beekeeper</p>
                 </div>
             </div>
 
             <div class="section right">
-                <button class="catalog-btn" id="catalog-trigger">Catalog of goods</button>
+                <button class="catalog-btn" onclick="openCatalog()">Catalog of goods</button>
             </div>
         </header>
 
-        <main class="main-view">
-            <section id="welcome-section">
-                <h2>Вітаємо у Golden Apiary!</h2>
-                <p>Ваш контент з'явиться тут.</p>
-            </section>
-            
-            <div style="height: 1000px;"></div> <section id="catalog-section">
-                <h2 style="color: #6d744e;">Наш Каталог</h2>
-                <p>Тут будуть найкращі товари від бджоляра.</p>
-            </section>
+        <main class="content-area">
+            <h2 id="main-text">Вітаємо у Golden Apiary!</h2>
+            <p>Натискай на кнопки — тепер вони працюють.</p>
         </main>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // ЛОГІКА КНОПОК
+        function openCatalog() {
+            document.getElementById('main-text').innerText = "Відкриваємо каталог товарів...";
+            document.getElementById('main-text').style.color = "#6d744e";
+            console.log("Каталог активовано");
+        }
+
+        function startSearch() {
+            const val = document.getElementById('searchInput').value;
+            if(val) {
+                alert("Шукаємо: " + val);
+            } else {
+                alert("Введіть щось для пошуку!");
+            }
+        }
+
+        function goHome() {
+            location.reload(); // Просто перезавантажує сторінку
+        }
+
+        // Пошук по Enter
+        document.getElementById('searchInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') startSearch();
+        });
+    </script>
+
 </body>
 </html>

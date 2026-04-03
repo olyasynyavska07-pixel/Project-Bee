@@ -2,26 +2,20 @@
     background-color: #fef08a; 
     display: flex;
     align-items: center;
-    padding: 10px 20px;
-    gap: 20px;
-    height: 120px; /* Фіксуємо висоту, щоб не "пливло" */
+    justify-content: space-between; /* Розсуває елементи по краях */
+    padding: 0 40px; /* Відступи від країв екрану */
+    height: 120px;
     box-sizing: border-box;
 }
 
-.mini-logo {
-    background-color: #d9da70;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 24px;
-}
-
+/* Контейнер пошуку (зліва) */
 .search-container {
     background-color: #e5e5e5;
     border-radius: 20px;
     display: flex;
     align-items: center;
-    padding: 5px 15px;
-    width: 200px;
+    padding: 8px 15px;
+    width: 250px;
 }
 
 .search-container input {
@@ -29,22 +23,24 @@
     border: none;
     outline: none;
     width: 100%;
+    margin-left: 8px;
     font-size: 14px;
+    color: #666;
 }
 
+/* Логотип (чітко по центру) */
 .center-brand {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Магія для ідеального центрування */
+    text-align: center;
 }
 
-/* ТА САМА РАМКА */
 .brand-box {
     background-color: #fef987;
-    border: 7px solid #facc15; 
+    border: 6px solid #facc15; 
     border-radius: 15px;
-    padding: 10px 25px;
-    text-align: center;
+    padding: 10px 30px;
 }
 
 .brand-title {
@@ -56,25 +52,31 @@
 
 .brand-title h1 {
     margin: 0;
-    font-size: 32px;
+    font-size: 36px;
     font-style: italic;
-    color: #444;
+    color: #555;
+    font-family: "Georgia", serif;
 }
 
 .brand-subtitle {
     margin: 0;
-    font-size: 11px;
+    font-size: 12px;
     font-style: italic;
     color: #333;
     font-weight: bold;
 }
 
+/* Кнопка каталогу (справа) */
 .catalog-button {
     background-color: #d9da70;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 12px;
+    border: 2px solid #555; /* Додав тонкий контур як на макеті */
+    padding: 10px 25px;
+    border-radius: 20px;
     font-weight: bold;
     font-style: italic;
     cursor: pointer;
+}
+
+.catalog-button:hover {
+    background-color: #c4c560;
 }

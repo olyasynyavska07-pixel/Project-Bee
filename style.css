@@ -1,115 +1,104 @@
-/* --- ВЕРХНЯ ПАНЕЛЬ (Top Bar) --- */
-.top-bar {
-    grid-area: header;
-    background-color: #fcf6c3; /* Більш насичений кремово-жовтий фон шапки */
+/* Основні налаштування */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px; /* Більші відступи по боках */
-    height: 120px; /* Точна висота */
-    border-bottom: 1px solid #ddd;
-    box-sizing: border-box;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+    flex-direction: column;
+    height: 100vh;
 }
 
-/* Ліва жовта кнопка-іконка */
-.icon-btn-yellow {
-    background-color: #dbe281; /* Точний оливковий колір кнопки */
+/* ВЕРХНЯ ПАНЕЛЬ */
+.header {
+    background-color: #fdf6bb; 
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.bee-btn-left {
+    background-color: #d8e17b;
     border: none;
     width: 60px;
     height: 60px;
-    border-radius: 15px; /* Більше закруглення */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 12px;
+    font-size: 30px;
     cursor: pointer;
 }
 
-.side-top-logo .icon-bee {
-    font-size: 35px;
-    filter: drop-shadow(0px 0px 2px #ffc107); /* Робимо бджолу більш жовтою */
-}
-
-/* Пошук */
-.search-container {
+.search-box {
     display: flex;
     align-items: center;
-    background-color: #e6e6e6; /* Трішки темніший сірий */
-    border-radius: 20px;
-    padding: 10px 20px;
-    width: 320px; /* Ширше поле пошуку */
-    margin-left: 20px;
+    background-color: #e0e0e0;
+    padding: 10px 15px;
+    border-radius: 12px;
+    width: 280px;
+    margin-left: 15px;
 }
 
-/* Стилізація іконки крученої лупи */
-.search-icon-rotated {
-    color: #444;
-    font-size: 1.2em;
-    transform: rotate(-45deg) scaleX(-1); /* Поворот і віддзеркалення іконки (спроба відтворити макет) */
-    margin-right: 15px;
-}
-
-.search-input {
+.search-box input {
     border: none;
-    background: none;
+    background: transparent;
     outline: none;
     width: 100%;
     font-size: 16px;
-    color: #555;
-    font-family: Arial, sans-serif;
 }
 
-/* Центральний блок логотипу (НАЙВАЖЛИВІШІ ЗМІНИ) */
-.logo-box-main {
-    text-align: center;
-    background-color: #fffbdf; /* Світліший фон всередині */
-    
-    /* Оновлена рамка (відтворюємо image_7.png) */
-    border: 10px solid #ffd700; /* Жирна, насичено-жовта рамка */
-    padding: 10px 50px;
+/* ЛОГОТИП З ЖИРНОЮ РАМКОЮ */
+.logo-container {
+    background-color: #fffbdf;
+    border: 10px solid #ffd700; /* Та сама рамка з макету */
     border-radius: 20px;
-    
+    padding: 5px 40px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
-.icon-bee-logo {
-    font-size: 50px;
-    filter: drop-shadow(0px 0px 3px #ffc107); /* Яскраво-жовта бджола */
-}
-
-/* Текст "Golden Apiary" */
-.brand-name {
+.logo-text h1 {
     margin: 0;
-    font-size: 40px; /* Більший шрифт */
-    font-weight: bold;
-    color: #555; /* Точний темно-сірий колір тексту */
-    font-style: italic; /* Текст нахилений */
+    font-size: 38px;
+    font-style: italic;
+    color: #444;
 }
 
-.tagline {
-    margin: 0;
-    font-size: 11px; /* Трішки менший шрифт підпису */
-    color: #666;
-    text-transform: uppercase; /* Текст великими літерами */
-    letter-spacing: 0.5px; /* Трішки розтягнуті літери */
-}
-
-/* Кнопка каталогу справа */
 .catalog-btn {
-    background-color: #dbe281; /* Точний оливковий колір кнопки */
-    color: #333; /* Темний текст */
+    background-color: #d8e17b;
     border: none;
-    padding: 15px 30px;
-    border-radius: 20px;
-    cursor: pointer;
+    padding: 12px 25px;
+    border-radius: 18px;
     font-weight: bold;
-    font-size: 14px;
-    font-style: italic; /* Нахилений текст */
-    margin-right: 30px;
+    font-style: italic;
+    cursor: pointer;
+}
+
+/* МЕНЮ ТА КОНТЕНТ */
+.main-container {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar {
+    background-color: #6b7554;
+    width: 85px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    gap: 15px;
+}
+
+.nav-button {
+    width: 55px;
+    height: 55px;
+    background-color: #d8e17b;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    font-size: 24px;
 }

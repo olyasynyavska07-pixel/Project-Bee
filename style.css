@@ -1,11 +1,9 @@
 /* --- ОСНОВНІ СКИНУТТЯ ТА ЗМІННІ --- */
 :root {
     --bg-light: #ffffff;
-    --bg-gray: #f2f2f2;
     --main-yellow: #fde86b; /* Колір верхньої панелі */
     --logo-green: #adb96c; /* Колір логотипу та кнопок */
     --logo-green-hover: #c4cf84; /* Колір при наведенні */
-    --side-dark-green: #3d4c3c; /* Колір бічної панелі */
     --text-dark: #333333;
     --text-muted: #666666;
 }
@@ -16,8 +14,6 @@ body {
     padding: 0;
     background-color: var(--bg-light);
     color: var(--text-dark);
-    display: flex;
-    min-height: 100vh;
 }
 
 /* --- ВЕРХНЯ ПАНЕЛЬ (Top Bar) --- */
@@ -27,9 +23,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
@@ -107,12 +100,6 @@ body {
 .title-bee {
     font-size: 32px;
     color: var(--text-dark);
-    animation: beeWiggle 2s infinite alternate ease-in-out;
-}
-
-@keyframes beeWiggle {
-    0% { transform: rotate(0deg) scale(1); }
-    100% { transform: rotate(10deg) scale(1.1); }
 }
 
 .main-title {
@@ -148,84 +135,5 @@ body {
     background-color: var(--logo-green-hover);
     transform: translateY(-3px);
 }
-
-/* --- БІЧНА ПАНЕЛЬ НАВІГАЦІЇ (Sidebar) --- */
-.side-nav {
-    background-color: var(--side-dark-green);
-    width: 100px;
-    padding: 140px 10px 40px; /* Відступи під хедер */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    position: fixed;
-    top: 0; left: 0; bottom: 0;
-    z-index: 500;
-}
-
-.nav-button {
-    width: 60px; height: 60px;
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-/* Кнопка Home */
-.home-button {
-    background-color: var(--logo-green);
-}
-
-.home-button:hover {
-    background-color: var(--logo-green-hover);
-    transform: scale(1.1);
-}
-
-.home-icon {
-    font-size: 22px;
-    color: white;
-}
-
-/* Порожні кнопки */
-.empty-button {
-    background-color: var(--main-yellow);
-}
-
-.empty-button:hover {
-    background-color: #ffe580; /* Трохи світліше при наведенні */
-    transform: scale(1.05);
-}
-
-/* Клас для активної вкладки */
-.nav-button.active {
-    box-shadow: 0 0 10px var(--logo-green);
-}
-
-/* --- ОСНОВНА ОБЛАСТЬ КОНТЕНТУ (Content Area) --- */
-.content-area {
-    flex-grow: 1;
-    margin-left: 100px; /* Відступ під бічну панель */
-    margin-top: 150px; /* Відступ під хедер */
-    padding: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.empty-placeholder {
-    font-size: 2em;
-    color: #cccccc;
-    text-align: center;
-    animation: fadeIn 1.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
     to { opacity: 1; }
 }

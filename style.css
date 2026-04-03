@@ -2,15 +2,14 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff;
+    font-family: 'Arial', sans-serif;
 }
 
-/* СТИЛІ МЕНЮ */
+/* МЕНЮ ЗЛІВА */
 .sidebar {
     width: 70px;
     height: 100vh;
-    background-color: #6d744e; /* Оливковий */
+    background-color: #6d744e;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +31,7 @@ body {
     font-size: 22px;
 }
 
-/* КОНТЕЙНЕР ПРАВОРУЧ */
+/* ГОЛОВНИЙ БЛОК */
 .wrapper {
     margin-left: 70px;
     width: calc(100% - 70px);
@@ -40,36 +39,27 @@ body {
 
 /* ШАПКА */
 .apiary-header {
-    background-color: #fef08a; /* Жовтий фон */
-    height: 125px;
+    background-color: #fef08a;
+    height: 130px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 30px;
+    padding: 0 40px;
     box-sizing: border-box;
 }
 
-/* Секції шапки (поділ на 3 рівні частини) */
 .header-section {
     display: flex;
     align-items: center;
-    flex: 1; /* Рівна ширина для кожної частини */
+    flex: 1;
 }
 
+/* ЛІВА ЧАСТИНА */
 .header-section.left {
     justify-content: flex-start;
     gap: 15px;
 }
 
-.header-section.center {
-    justify-content: center;
-}
-
-.header-section.right {
-    justify-content: flex-end;
-}
-
-/* Елементи лівої частини */
 .logo-mini {
     background-color: #d9db72;
     padding: 10px;
@@ -77,6 +67,7 @@ body {
     font-size: 22px;
 }
 
+/* ПОШУК (Трохи внизу) */
 .search-wrap {
     background-color: #e5e5e5;
     border-radius: 20px;
@@ -84,6 +75,7 @@ body {
     align-items: center;
     padding: 8px 15px;
     width: 220px;
+    margin-top: 15px; /* Опускаємо пошук вниз */
 }
 
 .search-wrap input {
@@ -94,10 +86,14 @@ body {
     width: 100%;
 }
 
-/* Центральна плашка (твоя рамка) */
+/* ЦЕНТР */
+.header-section.center {
+    justify-content: center;
+}
+
 .brand-plate {
     background-color: #fef987;
-    border: 7px solid #facc15; /* Жирна жовта рамка */
+    border: 7px solid #facc15;
     border-radius: 18px;
     padding: 10px 35px;
     text-align: center;
@@ -118,19 +114,19 @@ body {
     color: #444;
 }
 
-.bee-main {
-    font-size: 36px;
-}
-
 .brand-tagline {
     margin: 5px 0 0 0;
     font-size: 13px;
     font-style: italic;
     font-weight: bold;
-    color: #333;
 }
 
-/* Кнопка каталогу */
+/* ПРАВА ЧАСТИНА */
+.header-section.right {
+    justify-content: flex-end;
+}
+
+/* КАТАЛОГ (Трохи вліво) */
 .catalog-btn {
     background-color: #d9db72;
     border: 2px solid #555;
@@ -139,5 +135,5 @@ body {
     font-weight: bold;
     font-style: italic;
     cursor: pointer;
-    white-space: nowrap;
+    margin-right: 40px; /* Посуваємо кнопку вліво від краю */
 }

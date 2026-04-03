@@ -1,33 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Бджолина лавка</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пасіка: Мед та Бджоли</title>
+    
     <style>
-        body { font-family: sans-serif; background-color: #fff9e6; text-align: center; color: #4d3300; }
-        .container { max-width: 600px; margin: 50px auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h1 { color: #ffcc00; }
-        .product { border-bottom: 1px solid #eee; padding: 10px; }
-        .btn { background: #ffcc00; padding: 10px 20px; text-decoration: none; color: black; border-radius: 5px; font-weight: bold; }
+        /* Швидкі системні шрифти */
+        body { 
+            font-family: -apple-system, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #fffdf5; /* Колір воску */
+            color: #332200; 
+        }
+
+        header { 
+            background-color: #ffcc00; /* Бджолиний жовтий */
+            padding: 40px 20px; 
+            text-align: center; 
+        }
+
+        .container { 
+            max-width: 800px; 
+            margin: auto; 
+            padding: 20px; 
+        }
+
+        .product-card { 
+            background: white; 
+            border-radius: 12px; 
+            padding: 20px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 5px solid #ffcc00;
+        }
+
+        .btn { 
+            display: inline-block; 
+            background: #4d3300; 
+            color: white; 
+            padding: 12px 25px; 
+            text-decoration: none; 
+            border-radius: 25px; 
+            font-weight: bold;
+        }
+
+        img { 
+            max-width: 100%; 
+            height: auto; 
+            border-radius: 8px; 
+        }
     </style>
 </head>
 <body>
+
+    <header>
+        <h1>🐝 Золота Пасіка</h1>
+        <p>Натуральний мед та міцні бджолосім'ї</p>
+    </header>
+
     <div class="container">
-        <h1>🍯 Пасіка: Продаж меду та бджіл</h1>
-        <p>Вітаємо! Тут ви можете замовити найкращий натуральний продукт.</p>
-        
-        <div class="product">
-            <h3>Мед акацієвий (1л)</h3>
-            <p>Ціна: 250 грн</p>
+        <div class="product-card">
+            <h2>🍯 Наш Мед</h2>
+            <p>Зібраний у чистих полях. Липа, акація, різнотрав'я.</p>
+            <p><strong>Ціна: від 200 грн</strong></p>
+            <a href="https://t.me/твій_нік" class="btn">Замовити в Telegram</a>
         </div>
 
-        <div class="product">
-            <h3>Бджолопакети</h3>
-            <p>Ціна: за домовленістю</p>
+        <div class="product-card">
+            <h2>📦 Бджолопакети</h2>
+            <p>Продаємо бджіл породи Карпатка. Готові до переїзду у травні.</p>
+            <a href="tel:+380000000000" class="btn">Подзвонити</a>
         </div>
-
-        <br><br>
-        <a href="https://t.me/твій_нік" class="btn">Написати в Telegram</a>
     </div>
+
 </body>
 </html>

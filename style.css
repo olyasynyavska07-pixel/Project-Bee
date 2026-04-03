@@ -137,3 +137,23 @@ body {
 }
     to { opacity: 1; }
 }
+/* Стилі для нових картинок бджіл */
+
+/* Маленька бджілка в логотипі */
+.bee-logo-img {
+    width: 35px;  /* Ширина */
+    height: auto; /* Висота підлаштовується автоматично */
+    transition: transform 0.3s ease; /* Плавний ефект */
+}
+
+/* Ефект при наведенні на лого */
+.logo-box:hover .bee-logo-img {
+    transform: scale(1.1) rotate(-10deg); /* Збільшується і повертається */
+}
+
+/* Велика бджілка біля заголовка */
+.bee-title-img {
+    width: 50px;  /* Ширина */
+    height: auto;
+    margin-right: 10px; /* Відступ до тексту */
+}

@@ -2,15 +2,16 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Golden Apiary</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header class="header">
-        <div style="display: flex; align-items: center;">
-            <button class="bee-btn-left">🐝</button>
+        <div class="left-section">
+            <button class="bee-btn-small">🐝</button>
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Search goods...">
@@ -18,7 +19,7 @@
         </div>
 
         <div class="logo-container">
-            <span style="font-size:45px">🐝</span>
+            <span class="logo-bee">🐝</span>
             <div class="logo-text">
                 <h1>Golden Apiary</h1>
                 <p>The best honey and bees straight from the beekeeper</p>
@@ -28,15 +29,22 @@
         <button class="catalog-btn">Catalog of goods</button>
     </header>
 
-    <div class="main-container">
+    <div class="main-layout">
         <nav class="sidebar">
-            <a href="#" class="nav-button"><i class="fas fa-home"></i></a>
-            <a href="#" class="nav-button"><i class="fas fa-seedling"></i></a>
-            <a href="#" class="nav-button"><i class="fas fa-jar"></i></a>
+            <a href="#" class="nav-item active"><i class="fas fa-home"></i></a>
+            <a href="#" class="nav-item"><i class="fas fa-seedling"></i></a>
+            <a href="#" class="nav-item"><i class="fas fa-jar"></i></a>
+            <a href="#" class="nav-item"><i class="fas fa-bug"></i></a>
+            <a href="#" class="nav-item"><i class="fas fa-info-circle"></i></a>
+            <a href="#" class="nav-item"><i class="fas fa-images"></i></a>
+            <a href="#" class="nav-item"><i class="fas fa-envelope"></i></a>
         </nav>
-        <div style="padding: 20px;">
-            <h1>Вітаємо!</h1>
-        </div>
+
+        <main class="content">
+            <h2>Вітаємо на нашій пасіці!</h2>
+            <p>Тепер структура та стилі розділені правильно.</p>
+        </main>
     </div>
+
 </body>
 </html>

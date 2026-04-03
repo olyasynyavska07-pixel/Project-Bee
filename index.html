@@ -2,15 +2,16 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Golden Apiary</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="sidebar">
-        <div class="side-btn">🏠</div>
-        <div class="side-btn">🍯</div>
-        <div class="side-btn">🐝</div>
+        <div class="side-btn" id="home-btn" title="Головна">🏠</div>
+        <div class="side-btn" title="Мед">🍯</div>
+        <div class="side-btn" title="Бджоли">🐝</div>
         <div class="side-btn"></div>
         <div class="side-btn"></div>
         <div class="side-btn"></div>
@@ -20,28 +21,41 @@
     <div class="wrapper">
         <header class="apiary-header">
             <div class="section left">
-                <div class="mini-bee">🐝</div>
-                <div class="search-bar">
-                    <span>🔍</span>
-                    <input type="text" placeholder="Search goods...">
+                <div class="mini-bee-box">🐝</div>
+                <div class="search-wrap">
+                    <span id="search-icon" style="cursor: pointer;">🔍</span>
+                    <input type="text" id="search-field" placeholder="Search goods...">
                 </div>
             </div>
 
             <div class="section center">
-                <div class="brand-box">
-                    <div class="brand-main">
-                        <span class="bee-big">🐝</span>
+                <div class="main-logo-plate">
+                    <div class="logo-top">
+                        <span class="bee-emoji">🐝</span>
                         <h1>Golden Apiary</h1>
                     </div>
-                    <p class="subtitle">The best honey and bees straight from the beekeeper</p>
+                    <p class="tagline">The best honey and bees straight from the beekeeper</p>
                 </div>
             </div>
 
             <div class="section right">
-                <button class="catalog-btn">Catalog of goods</button>
+                <button class="catalog-btn" id="catalog-trigger">Catalog of goods</button>
             </div>
         </header>
+
+        <main class="main-view">
+            <section id="welcome-section">
+                <h2>Вітаємо у Golden Apiary!</h2>
+                <p>Ваш контент з'явиться тут.</p>
+            </section>
+            
+            <div style="height: 1000px;"></div> <section id="catalog-section">
+                <h2 style="color: #6d744e;">Наш Каталог</h2>
+                <p>Тут будуть найкращі товари від бджоляра.</p>
+            </section>
+        </main>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>

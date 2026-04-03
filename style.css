@@ -1,181 +1,124 @@
-/* --- Загальні стилі та кольори --- */
-:root {
-    --primary-yellow: #FFFFAD;      /* Світло-жовтий фон шапки */
-    --accent-yellow: #FFDF00;       /* Яскраво-жовта рамка лого */
-    --catalog-green: #CBDC6E;      /* Колір кнопок меню та каталогу */
-    --catalog-text: #414227;       /* Темний колір тексту кнопок */
-    --sidebar-bg: #6D775C;          /* Темно-зелений фон бічної панелі */
-    --search-bg: #EAEAEA;          /* Сірий фон пошуку */
-    --search-text: #606060;        /* Сірий колір тексту пошуку */
-    --shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif; /* Класичний веб-шрифт */
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    background-color: #f4f4f4; /* Дуже світлий сірий фон для контрасту */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    background-color: #fff;
 }
 
-/* --- Верхня панель (Header) --- */
+/* Шапка сайту */
 .header {
-    background-color: var(--primary-yellow);
-    padding: 10px 20px;
-    box-shadow: var(--shadow);
-    z-index: 100;
-}
-
-.header-content {
+    background-color: #FFFFAD; /* Світло-жовтий фон */
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    max-width: 1600px;
-    margin: 0 auto;
+    padding: 0 20px;
+    height: 100px;
 }
 
-/* Логотип та Назва */
-.logo-area {
+.logo-block {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-box {
+    background-color: #FFDF00; /* Яскраво-жовтий прямокутник */
+    padding: 10px 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 3px solid #F0D000;
+}
+
+.logo-box h1 {
+    font-style: italic;
+    font-size: 32px;
+    color: #414227;
+}
+
+.logo-box p {
+    font-style: italic;
+    font-size: 11px;
+    color: #414227;
+}
+
+/* Пошук та кнопка */
+.search-section {
     display: flex;
     align-items: center;
     gap: 15px;
-    padding: 10px 15px;
-}
-
-.apiary-logo-img {
-    height: 40px; /* Трохи менша, ніж рамка, для акуратності */
-}
-
-.logo-text h1 {
-    color: #000;
-    font-size: 24px;
-    font-style: italic; /* Курсив з вашого макету */
-    margin-bottom: 2px;
-}
-
-.tagline {
-    color: #000;
-    font-size: 10px;
-    font-style: italic;
-    opacity: 0.8;
-}
-
-/* Дія та Пошук */
-.action-area {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    position: absolute;
+    left: 20px;
 }
 
 .search-bar {
-    background-color: var(--search-bg);
+    background-color: #EAEAEA;
+    border-radius: 8px;
     padding: 5px 15px;
-    border-radius: 10px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    width: 250px;
-}
-
-.search-icon {
-    color: var(--search-text);
-    font-size: 14px;
+    width: 300px;
 }
 
 .search-bar input {
-    background: transparent;
+    background: none;
     border: none;
     outline: none;
-    font-size: 14px;
-    color: var(--search-text);
+    padding-left: 10px;
     width: 100%;
 }
 
-/* Кнопка "Catalog of goods" */
 .catalog-btn {
-    background-color: var(--catalog-green);
-    color: var(--catalog-text);
+    background-color: #CBDC6E;
+    color: #414227;
     border: none;
-    padding: 6px 15px;
-    border-radius: 10px;
-    font-size: 12px;
+    padding: 8px 20px;
+    border-radius: 15px;
     font-style: italic;
+    font-weight: bold;
     cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
 }
 
-.catalog-btn:hover {
-    background-color: #b9cd5c; /* Трохи темніший при наведенні */
-}
-
-.catalog-btn:active {
-    transform: translateY(1px); /* Ефект натискання */
-}
-
-/* --- Основна зона (Main & Sidebar) --- */
-.main-container {
+/* Основна частина */
+.main-layout {
     display: flex;
-    flex: 1; /* Заповнює залишок висоти */
+    height: calc(100vh - 100px);
 }
 
-/* Бічна панель */
 .sidebar {
-    background-color: var(--sidebar-bg);
-    width: 80px; /* Вузька панель */
+    background-color: #6D775C; /* Темно-зелений фон */
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    gap: 15px;
 }
 
-.sidebar ul {
-    list-style: none;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px; /* Відступи між кнопками */
-}
-
-.sidebar li a {
+.nav-btn {
+    width: 50px;
+    height: 50px;
+    background-color: #CBDC6E;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px; /* Розмір кнопок-квадратів */
-    height: 50px;
-    background-color: var(--catalog-green);
-    border-radius: 10px;
+    color: #414227;
     text-decoration: none;
-    color: var(--catalog-text);
-    font-size: 20px;
-    transition: transform 0.2s;
+    transition: 0.3s;
 }
 
-/* Ефекти наведення для кнопок меню */
-.sidebar li a:hover {
-    transform: scale(1.05); /* Легке збільшення */
+.nav-btn:hover {
+    background-color: #e2f096;
 }
 
-/* Стиль для активної кнопки (з іконкою Дому) */
-.sidebar li.active a {
-    color: #000;
+.nav-btn.active {
+    background-color: #FFFFAD;
 }
 
-/* Елементи без іконок, як на макеті */
-.sidebar li a:not(:has(*)) {
-    background-color: rgba(203, 220, 110, 0.7); /* Напівпрозора */
-}
-
-/* Зона контенту */
-.content-area {
-    flex: 1; /* Заповнює решту ширини */
-    background-color: white;
-    padding: 30px;
+.content {
+    padding: 50px;
+    flex: 1;
 }

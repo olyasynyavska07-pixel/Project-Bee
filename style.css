@@ -1,79 +1,35 @@
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-}
-
-/* Бічна панель */
-.side-menu {
-    width: 70px;
-    height: 100vh;
-    background-color: #6b704c; /* Оливковий колір */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 10px;
-    position: fixed;
-}
-
-.menu-item {
-    width: 50px;
-    height: 50px;
-    background-color: #d9da70;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.menu-item.active {
-    background-color: #d9da70;
-}
-
-/* Контейнер для всього, що справа від меню */
-.wrapper {
-    margin-left: 70px;
-    width: 100%;
-}
-
-/* ШАПКА САЙТУ */
 .apiary-header {
-    background-color: #fff176; /* Світло-жовтий фон */
-    height: 120px;
+    background-color: #fef08a; 
     display: flex;
     align-items: center;
-    padding: 0 30px;
+    padding: 10px 20px;
     gap: 20px;
+    height: 120px; /* Фіксуємо висоту, щоб не "пливло" */
+    box-sizing: border-box;
 }
 
 .mini-logo {
     background-color: #d9da70;
-    padding: 8px;
-    border-radius: 8px;
-    font-size: 22px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 24px;
 }
 
 .search-container {
-    background-color: #e0e0e0;
-    border-radius: 15px;
+    background-color: #e5e5e5;
+    border-radius: 20px;
     display: flex;
     align-items: center;
-    padding: 8px 15px;
-    width: 280px;
+    padding: 5px 15px;
+    width: 200px;
 }
 
 .search-container input {
-    border: none;
     background: transparent;
+    border: none;
     outline: none;
-    margin-left: 10px;
     width: 100%;
-    font-style: italic;
+    font-size: 14px;
 }
 
 .center-brand {
@@ -82,12 +38,12 @@ body {
     justify-content: center;
 }
 
-/* Центральна табличка з рамкою */
+/* ТА САМА РАМКА */
 .brand-box {
     background-color: #fef987;
-    border: 7px solid #facc15; /* Товста жовта рамка */
+    border: 7px solid #facc15; 
     border-radius: 15px;
-    padding: 10px 30px;
+    padding: 10px 25px;
     text-align: center;
 }
 
@@ -95,42 +51,30 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .brand-title h1 {
     margin: 0;
-    font-size: 42px;
+    font-size: 32px;
     font-style: italic;
-    color: #5d5d5d;
-    font-family: "Times New Roman", serif;
-}
-
-.bee-icon {
-    font-size: 40px;
+    color: #444;
 }
 
 .brand-subtitle {
     margin: 0;
-    font-size: 13px;
+    font-size: 11px;
     font-style: italic;
-    color: #444;
-    margin-top: 5px;
+    color: #333;
     font-weight: bold;
 }
 
-/* Кнопка каталогу */
 .catalog-button {
     background-color: #d9da70;
     border: none;
-    padding: 12px 20px;
-    border-radius: 15px;
+    padding: 10px 20px;
+    border-radius: 12px;
     font-weight: bold;
     font-style: italic;
-    font-size: 14px;
     cursor: pointer;
-}
-
-.catalog-button:hover {
-    background-color: #c4c560;
 }

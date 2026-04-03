@@ -1,16 +1,15 @@
-/* Основні налаштування */
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
 
-/* ВЕРХНЯ ПАНЕЛЬ */
+/* ШАПКА */
 .header {
-    background-color: #fdf6bb; 
-    height: 120px;
+    background-color: #fdf6bb;
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,81 +17,66 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-.bee-btn-left {
+.left-section { display: flex; align-items: center; gap: 15px; }
+
+.bee-btn-small {
     background-color: #d8e17b;
     border: none;
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 25px;
     cursor: pointer;
 }
 
 .search-box {
+    background-color: #e0e0e0;
+    padding: 8px 15px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
-    background-color: #e0e0e0;
-    padding: 10px 15px;
-    border-radius: 12px;
-    width: 280px;
-    margin-left: 15px;
 }
+.search-box input { border: none; background: transparent; outline: none; margin-left: 10px; }
 
-.search-box input {
-    border: none;
-    background: transparent;
-    outline: none;
-    width: 100%;
-    font-size: 16px;
-}
-
-/* ЛОГОТИП З ЖИРНОЮ РАМКОЮ */
+/* ЛОГОТИП З РАМКОЮ */
 .logo-container {
     background-color: #fffbdf;
-    border: 10px solid #ffd700; /* Та сама рамка з макету */
+    border: 8px solid #ffd700;
     border-radius: 20px;
-    padding: 5px 40px;
+    padding: 5px 30px;
     display: flex;
     align-items: center;
     gap: 15px;
 }
-
-.logo-text h1 {
-    margin: 0;
-    font-size: 38px;
-    font-style: italic;
-    color: #444;
-}
+.logo-text h1 { margin: 0; font-size: 32px; font-style: italic; color: #444; }
+.logo-text p { margin: 0; font-size: 10px; text-transform: uppercase; color: #666; }
 
 .catalog-btn {
     background-color: #d8e17b;
     border: none;
-    padding: 12px 25px;
-    border-radius: 18px;
+    padding: 10px 20px;
+    border-radius: 15px;
     font-weight: bold;
     font-style: italic;
     cursor: pointer;
 }
 
-/* МЕНЮ ТА КОНТЕНТ */
-.main-container {
-    display: flex;
-    flex: 1;
-}
+/* МАКЕТ */
+.main-layout { display: flex; flex: 1; }
 
 .sidebar {
     background-color: #6b7554;
-    width: 85px;
+    width: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 25px;
+    padding-top: 20px;
     gap: 15px;
 }
 
-.nav-button {
-    width: 55px;
-    height: 55px;
+.nav-item {
+    width: 50px;
+    height: 50px;
     background-color: #d8e17b;
     border-radius: 12px;
     display: flex;
@@ -100,5 +84,8 @@ body {
     align-items: center;
     color: #333;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 20px;
 }
+.nav-item.active, .nav-item:hover { background-color: #fffbdf; }
+
+.content { flex: 1; padding: 30px; }

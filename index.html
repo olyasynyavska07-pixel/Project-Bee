@@ -3,51 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Золота Пасіка — Натуральний мед</title>
+    <title>Golden Apiary — Офіційний сайт</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="loader">
         <div class="bee-fly">🐝</div>
-        <div class="loader-text">Відкриваємо вулик...</div>
+        <div class="loader-text">Golden Apiary...</div>
     </div>
 
-    <div class="background-slider">
-        <div class="slide"></div>
-        <div class="slide"></div>
-        <div class="slide"></div>
-    </div>
-    <div class="overlay"></div>
-
-    <header>
-        <h1>🐝 Золота Пасіка</h1>
-        <p class="subtitle">Найкращий мед та бджоли прямо від пасічника</p>
+    <header class="main-header">
+        <div class="header-logo">
+            <div class="logo-box">
+                <i class="fas fa-bee logo-icon"></i>
+            </div>
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search goods...">
+            </div>
+        </div>
+        <div class="header-center">
+            <div class="title-logo">
+                <i class="fas fa-bee header-bee"></i>
+                <h1 class="main-title">Golden Apiary</h1>
+            </div>
+            <p class="subtitle">The best honey and bees straight from the beekeeper</p>
+        </div>
+        <div class="header-right">
+            <a href="#" class="catalog-btn">
+                Catalog of goods
+                <i class="fas fa-chevron-right catalog-arrow"></i>
+            </a>
+        </div>
     </header>
 
-    <div class="container">
-        <div class="products-grid">
-            
-            <div class="product-card">
-                <h2>🍯 Мед Акації</h2>
-                <p>Прозорий, ніжний і дуже смачний. Найкращий вибір для всієї родини.</p>
-                <p class="price">300 грн / літр</p>
-                <a href="https://t.me/ваш_нік" class="btn">Замовити</a>
-            </div>
-
-            <div class="product-card">
-                <h2>📦 Бджолопакети</h2>
-                <p>Порода Карпатка. 4 рамки, здорові матки, висока продуктивність.</p>
-                <p class="price">від 1600 грн</p>
-                <a href="tel:+380000000000" class="btn">Подзвонити</a>
-            </div>
-
+    <aside class="side-panel">
+        <div class="panel-box home-box active">
+            <i class="fas fa-home home-icon"></i>
         </div>
-    </div>
+        <div class="panel-box empty-box"></div>
+        <div class="panel-box empty-box"></div>
+        <div class="panel-box empty-box"></div>
+        <div class="panel-box empty-box"></div>
+        <div class="panel-box empty-box"></div>
+        <div class="panel-box empty-box"></div>
+    </index-aside>
 
-    <footer>
-        <p>© 2026 Золота Пасіка. Працюємо з любов'ю.</p>
-    </footer>
+    <main class="content-area">
+        <div class="container">
+            <div class="main-placeholder">
+                <p>Welcome to Golden Apiary!</p>
+                <p>Here you can find and buy the best natural products from our honey factory.</p>
+                <p>Feel the taste of real nature.</p>
+            </div>
+        </div>
+    </main>
 
     <script>
         window.addEventListener('load', function() {

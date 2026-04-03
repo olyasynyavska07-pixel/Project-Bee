@@ -2,21 +2,23 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Golden Apiary</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="header">
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search goods...">
+    <header class="header">
+        <div style="display: flex; align-items: center;">
+            <button class="bee-btn-left">🐝</button>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search goods...">
+            </div>
         </div>
 
         <div class="logo-container">
-            <span style="font-size: 30px;">🐝</span>
+            <span style="font-size:45px">🐝</span>
             <div class="logo-text">
                 <h1>Golden Apiary</h1>
                 <p>The best honey and bees straight from the beekeeper</p>
@@ -24,24 +26,17 @@
         </div>
 
         <button class="catalog-btn">Catalog of goods</button>
-    </div>
+    </header>
 
-    <div class="main-wrapper">
-        <div class="sidebar">
-            <a href="#" class="nav-link active"><i class="fas fa-home"></i></a>
-            <a href="#" class="nav-link"><i class="fas fa-seedling"></i></a>
-            <a href="#" class="nav-link"><i class="fas fa-jar"></i></a>
-            <a href="#" class="nav-link"><i class="fas fa-bug"></i></a>
-            <a href="#" class="nav-link"><i class="fas fa-info-circle"></i></a>
-            <a href="#" class="nav-link"><i class="fas fa-images"></i></a>
-            <a href="#" class="nav-link"><i class="fas fa-envelope"></i></a>
-        </div>
-
-        <div class="content">
-            <h2>Вітаємо на нашій пасіці!</h2>
-            <p>Це головна сторінка. Виберіть розділ у меню зліва, щоб дізнатися більше.</p>
+    <div class="main-container">
+        <nav class="sidebar">
+            <a href="#" class="nav-button"><i class="fas fa-home"></i></a>
+            <a href="#" class="nav-button"><i class="fas fa-seedling"></i></a>
+            <a href="#" class="nav-button"><i class="fas fa-jar"></i></a>
+        </nav>
+        <div style="padding: 20px;">
+            <h1>Вітаємо!</h1>
         </div>
     </div>
-
 </body>
 </html>

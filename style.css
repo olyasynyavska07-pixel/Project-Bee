@@ -2,20 +2,28 @@
     background-color: #fef08a; 
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Розсуває елементи по краях */
-    padding: 0 40px; /* Відступи від країв екрану */
+    padding: 0 20px;
     height: 120px;
-    box-sizing: border-box;
+    gap: 15px; /* Невеликий відступ між усіма елементами */
 }
 
-/* Контейнер пошуку (зліва) */
+/* Іконка бджілки зліва */
+.mini-logo {
+    background-color: #d9da70;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+/* Пошук - тепер він одразу після бджілки */
 .search-container {
     background-color: #e5e5e5;
     border-radius: 20px;
     display: flex;
     align-items: center;
     padding: 8px 15px;
-    width: 250px;
+    width: 250px; /* Можеш змінити довжину тут */
 }
 
 .search-container input {
@@ -25,58 +33,32 @@
     width: 100%;
     margin-left: 8px;
     font-size: 14px;
-    color: #666;
 }
 
-/* Логотип (чітко по центру) */
+/* Центруємо головну назву */
 .center-brand {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%); /* Магія для ідеального центрування */
-    text-align: center;
+    flex-grow: 1; /* Займає вільний простір, щоб розсунути елементи */
+    display: flex;
+    justify-content: center;
 }
 
 .brand-box {
     background-color: #fef987;
-    border: 6px solid #facc15; 
+    border: 7px solid #facc15; 
     border-radius: 15px;
-    padding: 10px 30px;
+    padding: 10px 25px;
+    text-align: center;
 }
 
-.brand-title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.brand-title h1 {
-    margin: 0;
-    font-size: 36px;
-    font-style: italic;
-    color: #555;
-    font-family: "Georgia", serif;
-}
-
-.brand-subtitle {
-    margin: 0;
-    font-size: 12px;
-    font-style: italic;
-    color: #333;
-    font-weight: bold;
-}
-
-/* Кнопка каталогу (справа) */
+/* Кнопка каталогу - тепер вона ПРАВОРУЧ від центру */
 .catalog-button {
     background-color: #d9da70;
-    border: 2px solid #555; /* Додав тонкий контур як на макеті */
-    padding: 10px 25px;
-    border-radius: 20px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
     font-weight: bold;
     font-style: italic;
     cursor: pointer;
-}
-
-.catalog-button:hover {
-    background-color: #c4c560;
+    flex-shrink: 0;
+    margin-right: 20px; /* Відступ від правого краю */
 }

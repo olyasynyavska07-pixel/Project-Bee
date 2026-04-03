@@ -5,33 +5,25 @@
     font-family: 'Arial', sans-serif;
 }
 
-/* ШАПКА */
 .header {
     background-color: #FFFFAD;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Розставляє ліво-центр-право */
+    justify-content: space-between;
     padding: 10px 30px;
     height: 140px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid #FFD700;
 }
 
-/* Секції всередині шапки */
 .nav-section {
-    flex: 1; /* Робить всі три секції рівними за шириною */
+    flex: 1;
     display: flex;
     align-items: center;
 }
 
-.nav-section.center {
-    justify-content: center; /* Центрує логотип */
-}
+.nav-section.center { justify-content: center; }
+.nav-section.right { justify-content: flex-end; }
 
-.nav-section.right {
-    justify-content: flex-end; /* Притискає кнопку до правого краю */
-}
-
-/* Пошук */
 .search-bar {
     background: #EAEAEA;
     padding: 8px 15px;
@@ -49,14 +41,13 @@
     width: 100%;
 }
 
-/* Логотип */
 .logo-card {
     background: #FFDF00;
     border: 6px solid #FFD700;
     padding: 10px 25px;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    min-width: 300px;
 }
 
 .logo-main {
@@ -70,7 +61,6 @@
 .logo-main h1 { font-style: italic; font-size: 28px; color: #414227; }
 .logo-card p { font-style: italic; font-size: 10px; color: #414227; margin-top: 4px; }
 
-/* Кнопка каталогу */
 .catalog-btn {
     background: #CBDC6E;
     color: #414227;
@@ -82,7 +72,6 @@
     cursor: pointer;
 }
 
-/* ОСНОВНА ЧАСТИНА */
 .main-container {
     display: flex;
     height: calc(100vh - 140px);
@@ -108,14 +97,11 @@
     align-items: center;
     text-decoration: none;
     color: #414227;
-    transition: 0.2s;
 }
 
 .side-item.active { background: #FFFFAD; }
-.side-item:hover { transform: scale(1.1); }
 
 .content {
     flex: 1;
     padding: 40px;
-    background: #fff;
 }

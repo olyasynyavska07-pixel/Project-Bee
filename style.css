@@ -1,1 +1,143 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+}
 
+/* СТИЛІ МЕНЮ */
+.sidebar {
+    width: 70px;
+    height: 100vh;
+    background-color: #6d744e; /* Оливковий */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.side-btn {
+    width: 50px;
+    height: 50px;
+    background-color: #d9db72;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+}
+
+/* КОНТЕЙНЕР ПРАВОРУЧ */
+.wrapper {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+}
+
+/* ШАПКА */
+.apiary-header {
+    background-color: #fef08a; /* Жовтий фон */
+    height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+/* Секції шапки (поділ на 3 рівні частини) */
+.header-section {
+    display: flex;
+    align-items: center;
+    flex: 1; /* Рівна ширина для кожної частини */
+}
+
+.header-section.left {
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.header-section.center {
+    justify-content: center;
+}
+
+.header-section.right {
+    justify-content: flex-end;
+}
+
+/* Елементи лівої частини */
+.logo-mini {
+    background-color: #d9db72;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 22px;
+}
+
+.search-wrap {
+    background-color: #e5e5e5;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    width: 220px;
+}
+
+.search-wrap input {
+    border: none;
+    background: transparent;
+    outline: none;
+    margin-left: 8px;
+    width: 100%;
+}
+
+/* Центральна плашка (твоя рамка) */
+.brand-plate {
+    background-color: #fef987;
+    border: 7px solid #facc15; /* Жирна жовта рамка */
+    border-radius: 18px;
+    padding: 10px 35px;
+    text-align: center;
+    min-width: 320px;
+}
+
+.brand-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.brand-top h1 {
+    margin: 0;
+    font-size: 38px;
+    font-style: italic;
+    color: #444;
+}
+
+.bee-main {
+    font-size: 36px;
+}
+
+.brand-tagline {
+    margin: 5px 0 0 0;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Кнопка каталогу */
+.catalog-btn {
+    background-color: #d9db72;
+    border: 2px solid #555;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-style: italic;
+    cursor: pointer;
+    white-space: nowrap;
+}

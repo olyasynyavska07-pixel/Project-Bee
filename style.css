@@ -1,11 +1,11 @@
 /* --- ОСНОВНІ СКИНУТТЯ ТА ЗМІННІ --- */
 :root {
-    --bg-white: #ffffff;
-    --bg-gray: #f5f5f5;
-    --main-yellow: #f8db6c; /* Колір верхньої панелі */
-    --logo-green: #adb96a; /* Колір логотипу та кнопок */
-    --logo-green-hover: #c4d184; /* Колір при наведенні */
-    --sidebar-green: #3e4d3c; /* Колір бічної панелі */
+    --bg-light: #ffffff;
+    --bg-gray: #f2f2f2;
+    --main-yellow: #fde86b; /* Колір верхньої панелі */
+    --logo-green: #adb96c; /* Колір логотипу та кнопок */
+    --logo-green-hover: #c4cf84; /* Колір при наведенні */
+    --side-dark-green: #3d4c3c; /* Колір бічної панелі */
     --text-dark: #333333;
     --text-muted: #666666;
 }
@@ -14,27 +14,27 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--bg-white);
+    background-color: var(--bg-light);
     color: var(--text-dark);
     display: flex;
     min-height: 100vh;
 }
 
-/* --- ВЕРХНЯ ПАНЕЛЬ (Header) --- */
-.top-header {
+/* --- ВЕРХНЯ ПАНЕЛЬ (Top Bar) --- */
+.top-bar {
     background-color: var(--main-yellow);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
+    padding: 15px 40px;
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
 /* Ліва частина: Лого + Пошук */
-.header-left {
+.top-bar-left {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -60,19 +60,19 @@ body {
     color: white;
 }
 
-.search-bar {
+.search-field {
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
     padding: 8px 12px;
-    width: 220px;
+    width: 250px;
     border: 1px solid transparent;
     transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-.search-bar:hover,
-.search-bar:focus-within {
+.search-field:hover,
+.search-field:focus-within {
     background-color: white;
     border-color: var(--logo-green);
 }
@@ -83,7 +83,7 @@ body {
     font-size: 14px;
 }
 
-.search-bar input {
+.search-field input {
     background: transparent;
     border: none;
     outline: none;
@@ -93,20 +93,26 @@ body {
 }
 
 /* Центр: Назва + Підзаголовок */
-.header-center {
+.top-bar-center {
     text-align: center;
 }
 
-.title-group {
+.title-with-bee {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
 }
 
-.header-bee {
+.title-bee {
     font-size: 32px;
     color: var(--text-dark);
+    animation: beeWiggle 2s infinite alternate ease-in-out;
+}
+
+@keyframes beeWiggle {
+    0% { transform: rotate(0deg) scale(1); }
+    100% { transform: rotate(10deg) scale(1.1); }
 }
 
 .main-title {
@@ -122,12 +128,12 @@ body {
 }
 
 /* Права частина: Кнопка Каталог */
-.header-right {
+.top-bar-right {
     display: flex;
     align-items: center;
 }
 
-.catalog-button {
+.catalog-btn {
     background-color: var(--logo-green);
     color: white;
     padding: 12px 24px;
@@ -136,32 +142,30 @@ body {
     font-weight: bold;
     font-size: 0.9em;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    border: 2px solid transparent;
 }
 
-.catalog-button:hover {
+.catalog-btn:hover {
     background-color: var(--logo-green-hover);
     transform: translateY(-3px);
-    border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* --- БІЧНА ПАНЕЛЬ (Sidebar) --- */
-.side-navigation {
-    background-color: var(--sidebar-green);
-    width: 80px;
-    padding: 120px 10px 30px; /* Відступи під хедер */
+/* --- БІЧНА ПАНЕЛЬ НАВІГАЦІЇ (Sidebar) --- */
+.side-nav {
+    background-color: var(--side-dark-green);
+    width: 100px;
+    padding: 140px 10px 40px; /* Відступи під хедер */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
     position: fixed;
     top: 0; left: 0; bottom: 0;
     z-index: 500;
 }
 
-.nav-item {
-    width: 50px; height: 50px;
-    border-radius: 10px;
+.nav-button {
+    width: 60px; height: 60px;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -169,47 +173,52 @@ body {
 }
 
 /* Кнопка Home */
-.home-item {
+.home-button {
     background-color: var(--logo-green);
 }
 
-.home-item:hover {
+.home-button:hover {
     background-color: var(--logo-green-hover);
     transform: scale(1.1);
 }
 
 .home-icon {
-    font-size: 20px;
+    font-size: 22px;
     color: white;
 }
 
 /* Порожні кнопки */
-.empty-item {
-    background-color: var(--main-yellow); /* Колір порожніх боксів з фото */
+.empty-button {
+    background-color: var(--main-yellow);
 }
 
-.empty-item:hover {
+.empty-button:hover {
     background-color: #ffe580; /* Трохи світліше при наведенні */
     transform: scale(1.05);
 }
 
 /* Клас для активної вкладки */
-.nav-item.active {
+.nav-button.active {
     box-shadow: 0 0 10px var(--logo-green);
 }
 
-/* --- ОСНОВНИЙ КОНТЕНТ (Content) --- */
-.main-content {
+/* --- ОСНОВНА ОБЛАСТЬ КОНТЕНТУ (Content Area) --- */
+.content-area {
     flex-grow: 1;
-    margin-left: 80px; /* Відступ під бічну панель */
-    margin-top: 130px; /* Відступ під хедер */
-    padding: 40px;
+    margin-left: 100px; /* Відступ під бічну панель */
+    margin-top: 150px; /* Відступ під хедер */
+    padding: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.placeholder-text {
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.empty-placeholder {
     font-size: 2em;
     color: #cccccc;
     text-align: center;

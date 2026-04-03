@@ -1,45 +1,34 @@
-/* Базові налаштування */
+/* Основні налаштування сторінки */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     display: grid;
-    /* Визначаємо сітку: 220px для меню, решта для контенту */
-    grid-template-columns: 220px 1fr;
-    grid-template-rows: 110px 1fr; /* Висота верхньої панелі */
-    grid-template-areas: 
-        "header header"
-        "nav main";
+    grid-template-columns: 80px 1fr; /* Вузька колонка для кнопок зліва */
+    grid-template-rows: 120px 1fr;  /* Висота жовтої панелі зверху */
     height: 100vh;
+    background-color: #f9f9f9;
 }
 
-/* Верхня панель (Header) */
+/* ВЕРХНЯ ПАНЕЛЬ (Жовта) */
 .top-bar {
-    grid-area: header;
-    background-color: #fdf6c6; /* Світло-жовтий як у вас */
+    grid-column: 1 / span 2;
+    background-color: #fdf6c6; /* Світло-жовтий фон */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 30px;
-    box-sizing: border-box;
-    position: fixed; /* Закріплюємо */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+    padding: 0 40px;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
 }
 
+/* Поле пошуку */
 .search-container {
     display: flex;
     align-items: center;
-    background-color: #f5f5f5; /* Світло-сірий */
-    border-radius: 20px;
-    padding: 10px 15px;
-    width: 250px;
-}
-
-.search-icon {
-    color: #888;
-    margin-right: 10px;
+    background-color: #e6e6e6; /* Сірий фон пошуку */
+    border-radius: 10px;
+    padding: 8px 15px;
+    width: 350px;
 }
 
 .search-input {
@@ -47,103 +36,92 @@ body {
     background: none;
     outline: none;
     width: 100%;
-    font-size: 1em;
+    font-size: 16px;
+    color: #666;
+    margin-left: 10px;
 }
 
+/* ЦЕНТРАЛЬНИЙ БЛОК ЛОГОТИПУ (як на вашому скріншоті) */
 .logo-box {
-    text-align: center;
     background-color: #fffbdf;
-    border: 3px solid #ffd700;
-    padding: 10px 20px;
+    border: 8px solid #ffd700; /* Товста яскраво-жовта рамка */
+    padding: 10px 30px;
     border-radius: 15px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-.logo-icon {
-    font-size: 2.5em;
+.logo-text-group {
+    text-align: center;
 }
 
 .brand-name {
     margin: 0;
-    font-size: 1.8em;
+    font-size: 32px;
     font-weight: bold;
-    color: #444;
+    color: #555;
+    font-style: italic; /* Курсив як на фото */
 }
 
 .tagline {
     margin: 0;
-    font-size: 0.8em;
-    color: #666;
+    font-size: 12px;
+    color: #444;
+    font-weight: 500;
 }
 
+/* Кнопка каталогу справа */
 .catalog-btn {
-    background-color: #d8e17b; /* Оливковий колір кнопки */
-    color: white;
+    background-color: #d8e17b; /* Оливковий колір */
     border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
+    padding: 12px 25px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-style: italic;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 0.9em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Бічна навігація (Nav) */
+/* ЛІВЕ МЕНЮ (Темно-зелене) */
 .side-nav {
-    grid-area: nav;
-    background-color: #7d8e63; /* Оливковий фон */
-    padding-top: 130px; /* Відступ від верхньої панелі */
-    position: fixed;
-    height: 100%;
-    width: 220px;
-    overflow-y: auto; /* Якщо багато пунктів, буде прокрутка */
-}
-
-.side-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-.side-nav li {
-    margin-bottom: 10px;
-    padding: 0 15px;
-}
-
-.side-nav a {
+    background-color: #6b7554; /* Оливково-зелений як на фото */
     display: flex;
+    flex-direction: column;
     align-items: center;
+    padding-top: 20px;
     gap: 15px;
-    text-decoration: none;
-    color: white;
-    font-size: 1.1em;
-    padding: 12px 20px;
+}
+
+/* Жовті квадрати-кнопки зліва */
+.nav-item {
+    width: 50px;
+    height: 50px;
+    background-color: #d8e17b;
     border-radius: 10px;
-    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    transition: transform 0.2s;
 }
 
-.side-nav a:hover {
-    background-color: #6a7c50; /* Темніший оливковий при наведенні */
+.nav-item:hover {
+    transform: scale(1.05);
+    background-color: #e5ed92;
 }
 
-.side-nav a i {
-    font-size: 1.3em;
+/* Кнопка "Додому" (з іконкою будинку) */
+.nav-item.active {
+    background-color: #d8e17b;
 }
 
-/* Виділення активної сторінки */
-.side-nav a.active {
-    background-color: #fdf6c6; /* Світло-жовтий фон як на макеті */
-    color: #7d8e63; /* Оливковий текст */
-    font-weight: bold;
-}
-
-/* Основний контент (Main) */
+/* Білий простір для контенту */
 .main-content {
-    grid-area: main;
-    padding: 20px;
-    background-color: white; /* Чистий білий простір */
-    box-sizing: border-box;
-    /* Відступи, щоб контент не перекривався фіксованими панелями */
-    margin-top: 110px;
-    margin-left: 220px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 5px;
 }

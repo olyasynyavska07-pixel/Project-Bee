@@ -1,64 +1,140 @@
-.apiary-header {
-    background-color: #fef08a; 
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+}
+
+/* Бічна панель */
+.sidebar {
+    width: 75px;
+    height: 100vh;
+    background-color: #6d744e; /* Оливковий */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.side-btn {
+    width: 55px;
+    height: 55px;
+    background-color: #d8db71;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Основний контейнер */
+.main-wrapper {
+    margin-left: 75px; /* Відступ для бічного меню */
+    width: calc(100% - 75px);
+}
+
+/* ШАПКА */
+.header {
+    background-color: #fff27e; /* Жовтий фон */
+    height: 130px;
     display: flex;
     align-items: center;
-    padding: 0 20px;
-    height: 120px;
-    gap: 15px; /* Невеликий відступ між усіма елементами */
+    justify-content: space-between; /* Розподіл ліво-центр-право */
+    padding: 0 40px;
+    box-sizing: border-box;
 }
 
-/* Іконка бджілки зліва */
-.mini-logo {
-    background-color: #d9da70;
-    padding: 10px;
-    border-radius: 10px;
+/* Ліва частина */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.mini-bee {
+    background-color: #d8db71;
+    padding: 8px;
+    border-radius: 8px;
     font-size: 24px;
-    flex-shrink: 0;
 }
 
-/* Пошук - тепер він одразу після бджілки */
-.search-container {
+.search-box {
     background-color: #e5e5e5;
     border-radius: 20px;
     display: flex;
     align-items: center;
     padding: 8px 15px;
-    width: 250px; /* Можеш змінити довжину тут */
+    width: 250px;
 }
 
-.search-container input {
-    background: transparent;
+.search-box input {
     border: none;
+    background: transparent;
     outline: none;
     width: 100%;
-    margin-left: 8px;
-    font-size: 14px;
+    margin-left: 10px;
+    color: #666;
 }
 
-/* Центруємо головну назву */
-.center-brand {
-    flex-grow: 1; /* Займає вільний простір, щоб розсунути елементи */
+/* Центр (Логотип) */
+.header-center {
     display: flex;
     justify-content: center;
 }
 
-.brand-box {
+.main-logo-box {
     background-color: #fef987;
-    border: 7px solid #facc15; 
+    border: 7px solid #facc15; /* Та сама жирна рамка */
     border-radius: 15px;
-    padding: 10px 25px;
+    padding: 10px 35px;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-/* Кнопка каталогу - тепер вона ПРАВОРУЧ від центру */
-.catalog-button {
-    background-color: #d9da70;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 15px;
+.logo-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.logo-top h1 {
+    margin: 0;
+    font-size: 38px;
+    font-style: italic;
+    color: #444;
+}
+
+.bee-big {
+    font-size: 36px;
+}
+
+.subtitle {
+    margin: 5px 0 0 0;
+    font-size: 13px;
+    font-style: italic;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Права частина */
+.catalog-btn {
+    background-color: #d8db71;
+    border: 2px solid #333; /* Контур як на малюнку */
+    padding: 10px 25px;
+    border-radius: 20px;
     font-weight: bold;
     font-style: italic;
     cursor: pointer;
-    flex-shrink: 0;
-    margin-right: 20px; /* Відступ від правого краю */
+    white-space: nowrap;
+}
+
+.catalog-btn:hover {
+    background-color: #c9cc60;
 }

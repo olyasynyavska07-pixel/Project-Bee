@@ -6,141 +6,163 @@
     <title>Золота Пасіка — Натуральний мед</title>
     
     <style>
-        /* --- Стилі для індикатора завантаження (Preloader) --- */
+        /* --- ПРЕЛОАДЕР (завантаження) --- */
         #loader {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background-color: #ffcc00; /* Фірмовий жовтий колір */
+            background-color: #ffcc00;
             display: flex;
-            flex-direction: column; /* Текст під бджілкою */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999; /* Поверх всього */
+            z-index: 9999;
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
+        .bee-fly { font-size: 60px; animation: bounce 0.8s infinite alternate ease-in-out; }
+        @keyframes bounce { from { transform: translateY(0px); } to { transform: translateY(-25px); } }
+        #loader.hidden { opacity: 0; visibility: hidden; }
 
-        /* Анімація бджілки */
-        .bee-fly {
-            font-size: 60px;
-            animation: bounce 0.8s infinite alternate ease-in-out;
-        }
-
-        /* Текст під бджілкою */
-        .loader-text {
-            margin-top: 15px;
-            font-family: sans-serif;
-            font-weight: bold;
-            color: #4d3300;
-        }
-
-        /* Рух бджілки вгору-вниз */
-        @keyframes bounce {
-            from { transform: translateY(0px); }
-            to { transform: translateY(-25px); }
-        }
-
-        /* Клас, який ховає завантажувач */
-        #loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        /* --- Основні стилі сайту (для швидкості) --- */
+        /* --- ОСНОВНІ СТИЛІ --- */
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             line-height: 1.6; 
             margin: 0; 
             padding: 0; 
-            background-color: #fffdf5; 
+            /* Додаємо легкий градієнт на фоні */
+            background: linear-gradient(135deg, #fffdf5 0%, #fff5d1 100%); 
             color: #332200; 
+            min-height: 100vh;
         }
 
         header { 
             background-color: #ffcc00; 
-            padding: 50px 20px; 
-            text-align: center; 
+            padding: 80px 20px; 
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        h1 { margin: 0; font-size: 2.5em; }
+        h1 { margin: 0; font-size: 3.5em; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
 
+        /* --- КОНТЕЙНЕР ДЛЯ ПК (РОБИМО ШИРШИМ) --- */
         .container { 
-            max-width: 800px; 
-            margin: auto; 
+            max-width: 1100px; /* Збільшили з 800px до 1100px */
+            margin: 40px auto; 
             padding: 20px; 
+        }
+
+        /* СІТКА ДЛЯ КАРТОК */
+        .products-grid {
+            display: grid;
+            /* На ПК буде 2 колонки, на телефонах — 1 */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .product-card { 
             background: white; 
-            border-radius: 12px; 
-            padding: 25px; 
-            margin-bottom: 25px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-left: 6px solid #ffcc00;
-            transition: transform 0.2s;
+            border-radius: 20px; 
+            padding: 30px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 8px solid #ffcc00;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .product-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
 
-        .product-card h2 { margin-top: 0; color: #4d3300; }
-
-        .price { font-size: 1.3em; font-weight: bold; color: #cc9900; }
+        .price { font-size: 1.5em; font-weight: bold; color: #b38600; margin: 15px 0; }
 
         .btn { 
-            display: inline-block; 
+            display: block;
+            text-align: center;
             background: #4d3300; 
             color: white; 
-            padding: 12px 30px; 
+            padding: 15px; 
             text-decoration: none; 
-            border-radius: 25px; 
+            border-radius: 30px; 
             font-weight: bold;
-            margin-top: 10px;
+            transition: background 0.3s;
         }
 
-        footer { text-align: center; padding: 20px; color: #777; font-size: 0.9em; }
+        .btn:hover { background: #664400; }
+
+        footer { text-align: center; padding: 40px; color: #886600; font-size: 1em; }
+
+        /* Адаптація під дуже маленькі екрани */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2em; }
+            header { padding: 40px 10px; }
+        }
     </style>
 </head>
 <body>
 
     <div id="loader">
         <div class="bee-fly">🐝</div>
-        <div class="loader-text">Відкриваємо вулик...</div>
+        <div style="font-family: sans-serif; font-weight: bold; color: #4d3300; margin-top: 15px;">Завантаження сайту...</div>
     </div>
 
     <header>
         <h1>🐝 Золота Пасіка</h1>
-        <p>Найкращий мед та міцні бджолосім'ї прямо з вулика</p>
+        <p style="font-size: 1.2em;">Справжній мед та бджоли прямо від пасічника</p>
     </header>
 
     <div class="container">
-        <div class="product-card">
-            <h2>🍯 Натуральний Мед</h2>
-            <p>Свіжий збір з екологічно чистих районів. Липа, Акація, Різнотрав'я.</p>
-            <p class="price">Ціна: від 200 грн / л</p>
-            <a href="https://t.me/ваш_нік" class="btn">Замовити у Telegram</a>
-        </div>
+        <div class="products-grid">
+            
+            <div class="product-card">
+                <div>
+                    <h2>🍯 Мед Травневий</h2>
+                    <p>Перший збір року. Дуже ароматний та корисний. Підходить для зміцнення імунітету.</p>
+                </div>
+                <div>
+                    <p class="price">250 грн / літр</p>
+                    <a href="https://t.me/твій_нік" class="btn">Купити в Telegram</a>
+                </div>
+            </div>
 
-        <div class="product-card">
-            <h2>📦 Бджолопакети (Карпатка)</h2>
-            <p>Продаж молодих, здорових та високопродуктивних бджолосімей.</p>
-            <a href="tel:+380000000000" class="btn">Зателефонувати</a>
+            <div class="product-card">
+                <div>
+                    <h2>🌼 Мед з Різнотрав'я</h2>
+                    <p>Зібраний з квітів наших лугів. Має насичений смак та довгий післясмак.</p>
+                </div>
+                <div>
+                    <p class="price">200 грн / літр</p>
+                    <a href="https://t.me/твій_нік" class="btn">Купити в Telegram</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div>
+                    <h2>📦 Бджолопакети</h2>
+                    <p>4-рамкові бджолопакети породи "Карпатка". Молоді матки, добрий розплід.</p>
+                </div>
+                <div>
+                    <p class="price">від 1500 грн</p>
+                    <a href="tel:+380000000000" class="btn">Замовити дзвінок</a>
+                </div>
+            </div>
+
         </div>
     </div>
 
     <footer>
-        <p>© 2024 Золота Пасіка. Всі права захищені.</p>
+        <p>м. Новий Розділ | Працюємо з любов'ю до природи</p>
+        <p>© 2024 Золота Пасіка</p>
     </footer>
 
     <script>
-        // Коли вся сторінка завантажиться
         window.addEventListener('load', function() {
             const loader = document.getElementById('loader');
-            // Додаємо затримку 0.8 сек (щоб встигли побачити анімацію)
             setTimeout(() => {
-                loader.classList.add('hidden'); // Ховаємо жовтий екран
-            }, 800);
+                loader.classList.add('hidden');
+            }, 2000);
         });
     </script>
 

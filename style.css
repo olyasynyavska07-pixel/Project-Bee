@@ -2,69 +2,57 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    font-family: 'Arial', sans-serif;
-    background-color: #fff;
+    font-family: Arial, sans-serif;
 }
 
-/* Бічна панель */
+/* БІЧНЕ МЕНЮ (Залишається незмінним) */
 .sidebar {
-    width: 75px;
+    width: 70px;
     height: 100vh;
-    background-color: #6d744e; /* Оливковий */
+    background-color: #6d744e;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 15px;
+    padding-top: 10px;
     position: fixed;
-    left: 0;
-    top: 0;
+    z-index: 10;
 }
 
 .side-btn {
-    width: 55px;
-    height: 55px;
-    background-color: #d8db71;
-    margin-bottom: 12px;
+    width: 50px;
+    height: 50px;
+    background-color: #d9db72;
+    margin-bottom: 10px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
-    cursor: pointer;
 }
 
-/* Основний контейнер */
-.main-wrapper {
-    margin-left: 75px; /* Відступ для бічного меню */
-    width: calc(100% - 75px);
+/* КОНТЕЙНЕР ДЛЯ ШАПКИ */
+.main-container {
+    margin-left: 70px; /* Відступ, щоб не перекривати меню */
+    width: 100%;
 }
 
-/* ШАПКА */
-.header {
-    background-color: #fff27e; /* Жовтий фон */
-    height: 130px;
+.apiary-header {
+    background-color: #fef08a;
+    height: 120px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Розподіл ліво-центр-право */
-    padding: 0 40px;
-    box-sizing: border-box;
+    padding: 0 20px;
+    position: relative; /* Для точного центрування лого */
 }
 
-/* Ліва частина */
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.mini-bee {
-    background-color: #d8db71;
-    padding: 8px;
-    border-radius: 8px;
+.mini-logo {
+    background-color: #d9db72;
+    padding: 10px;
+    border-radius: 10px;
     font-size: 24px;
+    margin-right: 15px;
 }
 
-.search-box {
+.search-bar {
     background-color: #e5e5e5;
     border-radius: 20px;
     display: flex;
@@ -73,68 +61,62 @@ body {
     width: 250px;
 }
 
-.search-box input {
+.search-bar input {
     border: none;
     background: transparent;
     outline: none;
-    width: 100%;
     margin-left: 10px;
-    color: #666;
+    width: 100%;
 }
 
-/* Центр (Логотип) */
-.header-center {
-    display: flex;
-    justify-content: center;
-}
-
-.main-logo-box {
-    background-color: #fef987;
-    border: 7px solid #facc15; /* Та сама жирна рамка */
-    border-radius: 15px;
-    padding: 10px 35px;
+/* ЦЕНТРУВАННЯ ЛОГОТИПУ */
+.center-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Це поставить лого рівно посередині */
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-.logo-top {
+.brand-box {
+    background-color: #fef987;
+    border: 7px solid #facc15; 
+    border-radius: 15px;
+    padding: 8px 30px;
+    white-space: nowrap;
+}
+
+.brand-title {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
 }
 
-.logo-top h1 {
+.brand-title h1 {
     margin: 0;
-    font-size: 38px;
+    font-size: 34px;
     font-style: italic;
     color: #444;
 }
 
-.bee-big {
-    font-size: 36px;
-}
-
-.subtitle {
-    margin: 5px 0 0 0;
-    font-size: 13px;
+.brand-subtitle {
+    margin: 0;
+    font-size: 11px;
     font-style: italic;
-    color: #333;
     font-weight: bold;
 }
 
-/* Права частина */
-.catalog-btn {
-    background-color: #d8db71;
-    border: 2px solid #333; /* Контур як на малюнку */
-    padding: 10px 25px;
+/* КАТАЛОГ СПРАВА */
+.catalog-wrapper {
+    margin-left: auto; /* Штовхає кнопку в самий правий кут */
+}
+
+.catalog-button {
+    background-color: #d9db72;
+    border: 2px solid #444;
+    padding: 10px 20px;
     border-radius: 20px;
     font-weight: bold;
     font-style: italic;
     cursor: pointer;
-    white-space: nowrap;
-}
-
-.catalog-btn:hover {
-    background-color: #c9cc60;
 }

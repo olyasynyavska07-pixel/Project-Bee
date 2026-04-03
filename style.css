@@ -1,9 +1,10 @@
+/* Базові налаштування */
 body {
     margin: 0;
     padding: 0;
     display: flex;
     font-family: 'Arial', sans-serif;
-    background-color: #fff;
+    background-color: #fafafa;
 }
 
 /* ОЛИВКОВЕ МЕНЮ */
@@ -18,6 +19,7 @@ body {
     position: fixed;
     left: 0;
     top: 0;
+    z-index: 1000;
 }
 
 .side-btn {
@@ -30,18 +32,25 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 24px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-/* КОНТЕЙНЕР ДЛЯ ШАПКИ */
+.side-btn:hover {
+    background-color: #e5e791;
+    transform: scale(1.05);
+}
+
+/* КОНТЕЙНЕР СПРАВА */
 .wrapper {
-    margin-left: 70px; /* Місце під меню */
+    margin-left: 70px;
     width: calc(100% - 70px);
 }
 
-/* ШАПКА */
+/* ШАПКА (Жовта) */
 .apiary-header {
     background-color: #fef08a;
-    height: 130px;
+    height: 135px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -52,26 +61,25 @@ body {
 .section {
     display: flex;
     align-items: center;
-    flex: 1; /* Ділимо шапку на 3 рівні зони */
+    flex: 1; /* Рівномірний розподіл на 3 частини */
 }
 
-/* ПОЗИЦІОНУВАННЯ СЕКЦІЙ */
 .section.left { justify-content: flex-start; gap: 15px; }
 .section.center { justify-content: center; }
 .section.right { justify-content: flex-end; }
 
-/* ПОШУК (ТРОХИ ВНИЗУ) */
-.search-bar {
+/* ПОШУК (По чіназику - трохи внизу) */
+.search-wrap {
     background-color: #e5e5e5;
     border-radius: 20px;
     display: flex;
     align-items: center;
     padding: 8px 15px;
-    width: 210px;
-    margin-top: 25px; /* Опускаємо по чіназику */
+    width: 220px;
+    margin-top: 25px; /* Опускаємо вниз */
 }
 
-.search-bar input {
+.search-wrap input {
     border: none;
     background: transparent;
     outline: none;
@@ -79,52 +87,63 @@ body {
     margin-left: 8px;
 }
 
-.mini-bee {
+.mini-bee-box {
     background-color: #d9db72;
     padding: 10px;
     border-radius: 10px;
     font-size: 22px;
 }
 
-/* ЦЕНТРАЛЬНИЙ БЛОК */
-.brand-box {
+/* ЦЕНТРАЛЬНЕ ЛОГО */
+.main-logo-plate {
     background-color: #fef987;
     border: 7px solid #facc15;
-    border-radius: 15px;
-    padding: 10px 30px;
+    border-radius: 18px;
+    padding: 10px 35px;
     text-align: center;
     min-width: 320px;
 }
 
-.brand-main {
+.logo-top {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
 }
 
-.brand-main h1 {
+.logo-top h1 {
     margin: 0;
-    font-size: 38px;
+    font-size: 36px;
     font-style: italic;
     color: #444;
 }
 
-.subtitle {
+.tagline {
     margin: 5px 0 0 0;
     font-size: 13px;
     font-style: italic;
     font-weight: bold;
 }
 
-/* КАТАЛОГ (ТРОХИ ВЛІВО) */
+/* КАТАЛОГ (По чіназику - трохи вліво) */
 .catalog-btn {
     background-color: #d9db72;
     border: 2px solid #333;
-    padding: 12px 25px;
-    border-radius: 20px;
+    padding: 12px 28px;
+    border-radius: 25px;
     font-weight: bold;
     font-style: italic;
     cursor: pointer;
-    margin-right: 50px; /* Відсуваємо від правого краю */
+    margin-right: 60px; /* Посуваємо вліво від краю */
+    transition: 0.3s;
+}
+
+.catalog-btn:hover {
+    background-color: #c9cc60;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.main-view {
+    padding: 60px;
+    text-align: center;
 }

@@ -1,127 +1,123 @@
-/* Основні налаштування сторінки */
+/* Загальні налаштування */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    display: grid;
-    grid-template-columns: 80px 1fr; /* Вузька колонка для кнопок зліва */
-    grid-template-rows: 120px 1fr;  /* Висота жовтої панелі зверху */
+    padding: 0;
+    display: flex;
+    flex-direction: column;
     height: 100vh;
-    background-color: #f9f9f9;
+    overflow: hidden; /* Щоб не було зайвих смуг прокрутки */
 }
 
-/* ВЕРХНЯ ПАНЕЛЬ (Жовта) */
-.top-bar {
-    grid-column: 1 / span 2;
-    background-color: #fdf6c6; /* Світло-жовтий фон */
+/* ВЕРХНЯ ПАНЕЛЬ */
+.header {
+    background-color: #fdf6bb; 
+    height: 120px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-    border-bottom: 1px solid #e0e0e0;
-    position: relative;
+    padding: 0 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Поле пошуку */
-.search-container {
+/* ПОШУК */
+.search-box {
     display: flex;
     align-items: center;
-    background-color: #e6e6e6; /* Сірий фон пошуку */
-    border-radius: 10px;
-    padding: 8px 15px;
-    width: 350px;
+    background-color: #e0e0e0;
+    padding: 10px 15px;
+    border-radius: 12px;
+    width: 280px;
 }
-
-.search-input {
+.search-box input {
     border: none;
-    background: none;
+    background: transparent;
+    margin-left: 10px;
     outline: none;
     width: 100%;
-    font-size: 16px;
-    color: #666;
-    margin-left: 10px;
 }
 
-/* ЦЕНТРАЛЬНИЙ БЛОК ЛОГОТИПУ (як на вашому скріншоті) */
-.logo-box {
+/* ЛОГОТИП ЯК НА МАКЕТІ */
+.logo-container {
     background-color: #fffbdf;
-    border: 8px solid #ffd700; /* Товста яскраво-жовта рамка */
-    padding: 10px 30px;
-    border-radius: 15px;
+    border: 10px solid #ffd700; /* Жирна жовта рамка */
+    border-radius: 20px;
+    padding: 10px 35px;
     display: flex;
     align-items: center;
     gap: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
-
-.logo-text-group {
-    text-align: center;
-}
-
-.brand-name {
+.logo-icon { font-size: 45px; }
+.logo-text h1 {
     margin: 0;
     font-size: 32px;
-    font-weight: bold;
-    color: #555;
-    font-style: italic; /* Курсив як на фото */
-}
-
-.tagline {
-    margin: 0;
-    font-size: 12px;
+    font-style: italic;
     color: #444;
-    font-weight: 500;
+}
+.logo-text p {
+    margin: 0;
+    font-size: 11px;
+    color: #777;
+    text-transform: uppercase;
 }
 
-/* Кнопка каталогу справа */
+/* КНОПКА КАТАЛОГУ */
 .catalog-btn {
-    background-color: #d8e17b; /* Оливковий колір */
+    background-color: #c5d37c;
     border: none;
     padding: 12px 25px;
     border-radius: 15px;
     font-weight: bold;
     font-style: italic;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: 0.2s;
+}
+.catalog-btn:hover { background-color: #b1c068; }
+
+/* НИЖНЯ ЧАСТИНА */
+.main-container {
+    display: flex;
+    flex: 1;
 }
 
-/* ЛІВЕ МЕНЮ (Темно-зелене) */
-.side-nav {
-    background-color: #6b7554; /* Оливково-зелений як на фото */
+/* ЛІВЕ МЕНЮ */
+.sidebar {
+    background-color: #6b7554;
+    width: 90px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
-    gap: 15px;
+    padding-top: 25px;
+    gap: 18px;
 }
 
-/* Жовті квадрати-кнопки зліва */
-.nav-item {
-    width: 50px;
-    height: 50px;
+/* КНОПКИ-КВАДРАТИ */
+.nav-button {
+    width: 58px;
+    height: 58px;
     background-color: #d8e17b;
-    border-radius: 10px;
+    border-radius: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #333;
     text-decoration: none;
-    color: black;
-    font-size: 20px;
-    transition: transform 0.2s;
+    font-size: 24px;
+    transition: 0.3s ease;
 }
-
-.nav-item:hover {
+.nav-button:hover {
+    background-color: #fffbdf;
     transform: scale(1.05);
-    background-color: #e5ed92;
+}
+.nav-button.active {
+    background-color: #fffbdf;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
 }
 
-/* Кнопка "Додому" (з іконкою будинку) */
-.nav-item.active {
-    background-color: #d8e17b;
-}
-
-/* Білий простір для контенту */
-.main-content {
+/* КОНТЕНТ */
+.content {
+    flex: 1;
     background-color: white;
-    margin: 20px;
-    border-radius: 5px;
+    padding: 50px;
+    overflow-y: auto;
 }

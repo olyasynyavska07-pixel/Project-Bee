@@ -2,9 +2,9 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Golden Apiary - Final Fix</title>
+    <title>Golden Apiary - Animated Edition</title>
     <style>
-        /* ЗАБОРОНА ВИДІЛЕННЯ (крім інпутів) */
+        /* ЗАБОРОНА ВИДІЛЕННЯ */
         * {
             -webkit-user-select: none;
             user-select: none;
@@ -22,9 +22,10 @@
             display: flex;
             font-family: 'Arial', sans-serif;
             background-color: #ffffff;
+            overflow-x: hidden;
         }
 
-        /* ЕКРАН ЗАВАНТАЖЕННЯ */
+        /* 1. ЛОАДЕР З ПОЛЬОТОМ */
         #loader-wrapper {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -34,20 +35,20 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.6s ease;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .loader-bee {
-            font-size: 60px;
+            font-size: 70px;
             animation: fly 1.5s ease-in-out infinite;
         }
 
         @keyframes fly {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-30px); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-40px) rotate(5deg); }
         }
 
-        /* БІЧНА ПАНЕЛЬ */
+        /* 2. БІЧНА ПАНЕЛЬ */
         .sidebar {
             width: 70px;
             height: 100vh;
@@ -72,15 +73,33 @@
             align-items: center;
             font-size: 24px;
             cursor: pointer;
-            pointer-events: auto; /* ГАРАНТІЯ КЛІКУ */
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
+        /* Анімація кнопок зліва */
+        .side-btn:hover {
+            transform: scale(1.2) rotate(5deg);
+            background-color: #e2e48b;
+        }
+
+        .side-btn:active {
+            transform: scale(0.9);
+        }
+
+        /* 3. ШАПКА ТА КОНТЕНТ */
         .wrapper {
             margin-left: 70px;
             width: calc(100% - 70px);
+            opacity: 0; /* Початково приховано для анімації появи */
+            transform: translateY(20px);
+            transition: all 1s ease-out;
         }
 
-        /* ШАПКА */
+        .wrapper.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .apiary-header {
             background-color: #fef08a;
             height: 140px;
@@ -89,6 +108,7 @@
             justify-content: space-between;
             padding: 0 40px;
             box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         .section { display: flex; align-items: center; flex: 1; }
@@ -96,7 +116,7 @@
         .section.center { justify-content: center; }
         .section.right { justify-content: flex-end; }
 
-        /* ПОШУК (Приспущений) */
+        /* АНІМАЦІЯ ПОШУКУ */
         .search-box {
             background-color: #f3f4f6;
             border-radius: 25px;
@@ -105,6 +125,15 @@
             padding: 10px 20px;
             width: 240px;
             margin-top: 35px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .search-box:focus-within {
+            width: 280px;
+            border-color: #facc15;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .search-box input {
@@ -115,30 +144,50 @@
             margin-left: 10px;
         }
 
-        .search-icon { cursor: pointer; pointer-events: auto; }
-
-        /* ЛОГО */
+        /* АНІМАЦІЯ ЛОГО */
         .brand-plate {
             background-color: #fef987;
             border: 6px solid #facc15;
             border-radius: 20px;
             padding: 15px 40px;
             text-align: center;
+            transition: transform 0.5s ease;
         }
 
-        .brand-plate h1 { margin: 0; font-size: 42px; font-style: italic; color: #374151; }
+        .brand-plate:hover {
+            transform: translateY(-5px);
+        }
 
-        /* КАТАЛОГ (Зміщений вліво) */
+        /* КНОПКА КАТАЛОГУ (З ЕФЕКТАМИ) */
         .catalog-btn {
             background-color: #d9db72;
             border: 2px solid #4b5563;
-            padding: 12px 30px;
+            padding: 12px 35px;
             border-radius: 30px;
             font-weight: 700;
             font-style: italic;
             cursor: pointer;
             margin-right: 70px;
-            pointer-events: auto;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .catalog-btn:hover {
+            background-color: #c9cc60;
+            box-shadow: 0 0 20px rgba(217, 219, 114, 0.6);
+            transform: translateX(-10px); /* Трохи вбік при наведенні */
+        }
+
+        .catalog-btn:active {
+            transform: scale(0.95) translateX(-10px);
+        }
+
+        /* Текст */
+        .content-area {
+            padding: 100px;
+            text-align: center;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -146,7 +195,7 @@
 
     <div id="loader-wrapper">
         <div class="loader-bee">🐝</div>
-        <div style="margin-top:20px; font-weight:bold; color:#6d744e;">ЗАВАНТАЖЕННЯ...</div>
+        <div style="margin-top:25px; font-weight:bold; color:#6d744e; font-size:20px;">ПРИГОТУЙТЕСЬ...</div>
     </div>
 
     <div class="sidebar">
@@ -155,68 +204,64 @@
         <div class="side-btn">🐝</div>
     </div>
 
-    <div class="wrapper">
+    <div class="wrapper" id="main-wrapper">
         <header class="apiary-header">
             <div class="section left">
                 <div style="background:#d9db72; padding:10px; border-radius:10px; font-size:22px;">🐝</div>
                 <div class="search-box">
-                    <span class="search-icon" id="btn-search">🔍</span>
-                    <input type="text" id="searchInput" placeholder="Search goods...">
+                    <span id="btn-search" style="cursor:pointer">🔍</span>
+                    <input type="text" id="searchInput" placeholder="Шукати мед...">
                 </div>
             </div>
 
             <div class="section center">
                 <div class="brand-plate">
                     <h1>Golden Apiary</h1>
-                    <p style="margin:5px 0 0 0; font-style:italic;">The best honey from the beekeeper</p>
+                    <p style="margin:5px 0 0 0; font-style:italic;">Натуральний мед з серця пасіки</p>
                 </div>
             </div>
 
             <div class="section right">
-                <button class="catalog-btn" id="btn-catalog">Catalog of goods</button>
+                <button class="catalog-btn" id="btn-catalog">Каталог товарів</button>
             </div>
         </header>
 
-        <main style="padding: 100px; text-align: center;">
-            <h2 id="status-text">Ласкаво просимо!</h2>
-            <p>Тепер усі кнопки знову працюють, а текст не виділяється.</p>
+        <main class="content-area">
+            <h2 id="status-text">Усе літає та працює!</h2>
+            <p>Наводь на кнопки, щоб побачити анімацію.</p>
         </main>
     </div>
 
     <script>
-        // 1. ПРИХОВУВАННЯ ЛОАДЕРА
+        // ЛОГІКА ПОЯВИ САЙТУ
         window.addEventListener('load', () => {
+            const loader = document.getElementById('loader-wrapper');
+            const wrapper = document.getElementById('main-wrapper');
+            
             setTimeout(() => {
-                const loader = document.getElementById('loader-wrapper');
                 loader.style.opacity = '0';
-                setTimeout(() => { loader.style.display = 'none'; }, 600);
+                setTimeout(() => { 
+                    loader.style.display = 'none';
+                    wrapper.classList.add('visible'); // Плавна поява сайту
+                }, 800);
             }, 2000);
         });
 
-        // 2. ЛОГІКА КНОПОК (через addEventListener - так надійніше)
-        
-        // Кнопка Додому (перезавантаження)
+        // ПЕРЕВІРКА КНОПОК
         document.getElementById('btn-home').addEventListener('click', () => {
             location.reload();
         });
 
-        // Кнопка Каталог
         document.getElementById('btn-catalog').addEventListener('click', () => {
-            document.getElementById('status-text').innerText = "Каталог активовано! 🍯";
-            alert("Відкриваємо каталог товарів!");
+            document.getElementById('status-text').innerText = "Каталог відкривається... ✨";
         });
 
-        // Пошук
         const searchInput = document.getElementById('searchInput');
         const searchBtn = document.getElementById('btn-search');
 
         function runSearch() {
             const val = searchInput.value;
-            if(val.trim()) {
-                alert("Шукаємо: " + val);
-            } else {
-                alert("Введіть щось у пошук!");
-            }
+            if(val.trim()) alert("Шукаємо: " + val);
         }
 
         searchBtn.addEventListener('click', runSearch);

@@ -2,245 +2,36 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Golden Apiary - Ідеальна Копія Дизайну</title>
-    <style>
-        /* БАЗОВІ НАЛАШТУВАННЯ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-user-select: none;
-            user-select: none; /* Заборона виділення тексту */
-        }
-        input {
-            -webkit-user-select: text;
-            user-select: text; /* Дозволяємо виділяти текст у пошуку */
-        }
-
-        body {
-            display: flex;
-            font-family: 'Arial', sans-serif;
-            background-color: #f7f7f7;
-            height: 100vh;
-            overflow: hidden; /* Забороняємо зайвий скрол */
-        }
-
-        /* БІЧНА ПАНЕЛЬ (ОЛИВКОВА) */
-        .sidebar {
-            width: 70px;
-            height: 100%;
-            background-color: #6d744e; /* Темно-зелений */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 15px;
-            border-right: 2px solid #5d6342;
-        }
-
-        .side-btn {
-            width: 50px;
-            height: 50px;
-            background-color: #d9db72; /* Жовто-зелений */
-            margin-bottom: 12px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            cursor: pointer;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .side-btn:hover {
-            transform: scale(1.1) rotate(5deg);
-            background-color: #e2e48b;
-        }
-        .side-btn:active {
-            transform: scale(0.9);
-        }
-
-        /* ОСНОВНИЙ КОНТЕНТ */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        /* ЖОВТА ШАПКА */
-        .header {
-            background-color: #fef08a; /* Світло-жовтий */
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 40px;
-            border-bottom: 8px solid #fde047; /* Жовта лінія під шапкою */
-        }
-
-        /* Ліва частина шапки */
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            position: relative;
-        }
-
-        /* Пошук */
-        .search-area {
-            background-color: #e5e7eb; /* Сірий */
-            border-radius: 20px;
-            padding: 8px 15px;
-            width: 280px;
-            display: flex;
-            align-items: center;
-            margin-top: 25px; /* Приспущений як на фото */
-        }
-
-        .search-area input {
-            border: none;
-            background: transparent;
-            outline: none;
-            width: 100%;
-            margin-left: 10px;
-            color: #555;
-            font-size: 14px;
-        }
-
-        /* Логотип по центру */
-        .logo-box {
-            background-color: #fef987;
-            border: 6px solid #facc15; /* Яскраво-жовта рамка */
-            border-radius: 15px;
-            padding: 10px 40px;
-            text-align: center;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .logo-box h1 {
-            font-size: 38px;
-            font-style: italic;
-            color: #374151;
-            margin: 0;
-        }
-
-        .logo-box p {
-            font-size: 12px;
-            font-style: italic;
-            font-weight: bold;
-            color: #555;
-            margin: 5px 0 0 0;
-        }
-
-        /* Права частина шапки */
-        .header-right {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            align-items: flex-end;
-            margin-top: 15px; /* Приспущений блок кнопок */
-        }
-
-        .head-btn {
-            background-color: #d9db72;
-            border: 2px solid #555; /* Темна рамка */
-            border-radius: 20px;
-            padding: 6px 30px;
-            font-weight: bold;
-            font-style: italic;
-            color: #374151;
-            cursor: pointer;
-            transition: 0.2s;
-            text-align: center;
-            min-width: 160px;
-        }
-
-        .head-btn:hover {
-            background-color: #c9cc60;
-            transform: translateY(-2px);
-        }
-
-        .head-btn:active {
-            transform: scale(0.98);
-        }
-
-        /* СІТКА ТОВАРІВ */
-        .content {
-            padding: 50px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .card {
-            background-color: #ffffff;
-            border: 5px solid #d1d5db; /* Сіра рамка */
-            border-radius: 20px;
-            height: 250px;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        /* Виділена картка */
-        .card.active {
-            border-color: #3b82f6; /* Синя рамка як на фото */
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
-        }
-
-        .card:hover:not(.active) {
-            border-color: #facc15; /* Жовта рамка при наведенні */
-            transform: scale(1.02);
-        }
-
-        /* НИЖНЯ ЖОВТА ЛІНІЯ */
-        .footer-line {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 12px;
-            background-color: #fde047; /* Яскраво-жовтий */
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <nav class="sidebar">
-        <div class="side-btn" id="btn-home">🏠</div>
-        <div class="side-btn" style="font-size: 20px;">🍯🥄</div>
-        <div class="side-btn">🐝</div>
-        <div class="side-btn">🛒</div>
-    </nav>
-
-    <div class="main-content">
-        <header class="header">
-            <div class="header-left">
-                <div style="font-size:24px;">🐝 Spoon</div>
-                <div class="search-area">
-                    <span>🔍</span>
-                    <input type="text" placeholder="Search goods...">
+    <div class="bg-layer"></div>
+    <div class="main-layout">
+        <nav class="sidebar">
+            <div class="side-btn">🏠</div>
+            <div class="side-btn">🍯🥄</div>
+            <div class="side-btn">🐝</div>
+            <div class="side-btn">🛒</div>
+        </nav>
+        <div class="right-section">
+            <header class="header">
+                <div style="font-size: 20px;">🐝 Spoon</div>
+                <div class="logo-box">
+                    <h1>Golden Apiary</h1>
+                    <p>The best honey and bees straight from the beekeeper</p>
                 </div>
-            </div>
-
-            <div class="logo-box">
-                <h1>Golden Apiary</h1>
-                <p>The best honey and bees straight from the beekeeper</p>
-            </div>
-
-            <div class="header-right">
-                <button class="head-btn" onclick="alert('Логін!')">Login</button>
-                <button class="head-btn" style="font-size: 13px;">Catalog of goods</button>
-            </div>
-        </header>
-
-        <main class="content">
-            <div class="card"></div> <div class="card active"></div> <div class="card"></div> </main>
-
-        <div class="footer-line"></div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <button class="head-btn" onclick="location.href='login.html'">Login</button>
+                    <button class="head-btn" style="font-size: 12px;">Catalog of goods</button>
+                </div>
+            </header>
+            <main style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; padding: 40px;">
+                <div style="background: white; border: 4px solid #d1d5db; border-radius: 20px; height: 250px;"></div>
+                <div style="background: white; border: 4px solid #3b82f6; border-radius: 20px; height: 250px;"></div>
+                <div style="background: white; border: 4px solid #d1d5db; border-radius: 20px; height: 250px;"></div>
+            </main>
+            <div class="footer-line"></div>
+        </div>
     </div>
-
 </body>
 </html>

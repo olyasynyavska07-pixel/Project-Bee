@@ -2,43 +2,73 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golden Apiary - Clean Design</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Golden Apiary - Мій перший сайт</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { display: flex; height: 100vh; background-color: #fefce8; overflow: hidden; }
+
+        /* Бічна панель */
+        .sidebar {
+            width: 80px; background-color: #4a4e31; height: 100%;
+            display: flex; flex-direction: column; align-items: center; padding-top: 20px;
+        }
+        .side-btn {
+            width: 50px; height: 50px; background: #d9db72; margin-bottom: 15px;
+            border-radius: 12px; display: flex; justify-content: center; align-items: center;
+            font-size: 24px; cursor: pointer; transition: 0.3s;
+        }
+        .side-btn:hover { transform: scale(1.1); background: #e2e48b; }
+
+        /* Основна частина */
+        .main { flex: 1; display: flex; flex-direction: column; }
+
+        .header {
+            background-color: #fef08a; height: 120px; border-bottom: 5px solid #facc15;
+            display: flex; align-items: center; justify-content: space-around; padding: 0 20px;
+        }
+
+        .logo-box { text-align: center; border: 3px solid #facc15; padding: 10px 20px; border-radius: 15px; background: white; }
+        
+        .content { padding: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        
+        .card { 
+            height: 200px; background: white; border: 3px solid #e5e7eb; 
+            border-radius: 20px; transition: 0.3s; cursor: pointer;
+        }
+        .card:hover { border-color: #facc15; transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+
+        /* Лоадер */
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #fef08a; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 100;
+        }
+        .bee { font-size: 50px; animation: bounce 1s infinite alternate; }
+        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-20px); } }
+    </style>
 </head>
 <body>
 
     <div id="loader">
-        <div class="bee-fly">🐝</div>
-        <p class="loader-text">ЗАВАНТАЖЕННЯ...</p>
+        <div class="bee">🐝</div>
+        <h2 style="color: #4a4e31;">Завантаження вулика...</h2>
     </div>
 
     <div class="sidebar">
-        <div class="side-btn" onclick="location.reload()">🏠</div>
+        <div class="side-btn">🏠</div>
         <div class="side-btn">🍯</div>
-        <div class="side-btn">🐝</div>
         <div class="side-btn">🛒</div>
     </div>
 
-    <div class="main-container">
+    <div class="main">
         <header class="header">
-            <div class="search-area">
-                <span class="header-icons">🐝🥄</span>
-                <div class="search-bar">
-                    <span>🔍</span>
-                    <input type="text" placeholder="Search goods...">
-                </div>
-            </div>
-
             <div class="logo-box">
                 <h1>🐝 Golden Apiary</h1>
-                <p>The best honey and bees straight from the beekeeper</p>
+                <p>Найкращий мед прямо з пасіки</p>
             </div>
-
-            <div class="btn-group">
-                <button class="head-btn">Login</button>
-                <button class="head-btn catalog-btn">Catalog of goods</button>
-            </div>
+            <button style="padding: 10px 20px; border-radius: 20px; border: 2px solid #4a4e31; cursor: pointer; font-weight: bold; background: #d9db72;">Увійти</button>
         </header>
 
         <main class="content">
@@ -46,10 +76,16 @@
             <div class="card"></div>
             <div class="card"></div>
         </main>
-
-        <div class="footer-line"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Прибираємо лоадер через 2 секунди
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+            }, 2000);
+        };
+    </script>
+
 </body>
 </html>

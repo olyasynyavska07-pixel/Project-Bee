@@ -22,9 +22,9 @@ body, html {
 }
 
 @keyframes backgroundFade {
-    0%, 100% { background-image: url('pasika1.jpg'); background-color: #6d744e; }
-    33% { background-image: url('pasika2.jpg'); background-color: #fde047; }
-    66% { background-image: url('pasika3.jpg'); background-color: #a3a63c; }
+    0%, 100% { background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/31/%D0%94%D1%83%D0%B1%D0%B8_%D0%BD%D0%B0_%D0%B3%D0%B0%D0%BB%D1%8F%D0%B2%D0%B8%D0%BD%D1%96.jpg'); background-color: #6d744e; }
+    33% { background-image: url('https://st.depositphotos.com/1000580/4405/i/450/depositphotos_44052373-stock-photo-spring-flower-meadow.jpg'); background-color: #fde047; }
+    66% { background-image: url('https://static5.depositphotos.com/1038117/462/i/450/depositphotos_4621883-stock-photo-field-of-daisy-flowers.jpg'); background-color: #a3a63c; }
 }
 
 /* СТРУКТУРА КОНТЕНТУ */

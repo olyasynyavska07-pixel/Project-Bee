@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Golden Apiary - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Специфічні стилі для форми логіну */
+        .login-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+        }
+
+        .login-card {
+            background-color: #d1d5db; /* Сіра зовнішня рамка */
+            padding: 15px;
+            border-radius: 20px;
+            width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .login-inner {
+            background-color: #fef987; /* Світло-жовтий фон картки */
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .login-inner h2 {
+            color: #a3a63c;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            font-size: 12px;
+            color: #888;
+            margin-left: 10px;
+        }
+
+        .input-field {
+            width: 100%;
+            background-color: #e5e7eb;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .input-field input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+        }
+
+        .action-btn {
+            width: 100%;
+            background-color: #b8c16b;
+            border: none;
+            border-radius: 20px;
+            padding: 12px;
+            font-weight: bold;
+            color: #374151;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .action-btn:hover {
+            background-color: #a3a63c;
+            transform: scale(1.02);
+        }
+
+        .divider {
+            height: 4px;
+            background-color: #d1d5db;
+            margin: 20px -30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <header class="header">
+            <div style="width: 70px;">
+                <div class="side-btn" style="margin:0">🐝</div>
+            </div>
+
+            <div class="logo-box">
+                <h1>🐝 Golden Apiary</h1>
+                <p>The best honey and bees straight from the beekeeper</p>
+            </div>
+
+            <div class="btn-group">
+                <button class="head-btn" onclick="window.location.href='index.html'">Back</button>
+            </div>
+        </header>
+
+        <main class="login-wrapper">
+            <div class="login-card">
+                <div class="login-inner">
+                    <h2>Please Login</h2>
+                    
+                    <div class="input-group">
+                        <label>...</label>
+                        <div class="input-field">
+                            <span>👤</span>
+                            <input type="text" placeholder="Login">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>...</label>
+                        <div class="input-field">
+                            <span>🔑</span>
+                            <input type="password" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <button class="action-btn">Sing</button>
+
+                    <div class="divider"></div>
+
+                    <div class="input-field" style="margin-bottom: 10px; height: 40px;"></div>
+                    <button class="action-btn">Register</button>
+                </div>
+            </div>
+        </main>
+
+        <div class="footer-line"></div>
+    </div>
+
+</body>
+</html>

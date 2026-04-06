@@ -1,4 +1,4 @@
-/* Базові налаштування */
+/* 1. БАЗОВІ НАЛАШТУВАННЯ */
 * {
     margin: 0; padding: 0; box-sizing: border-box;
     -webkit-user-select: none; user-select: none;
@@ -6,178 +6,98 @@
 input { -webkit-user-select: text; user-select: text; }
 
 body {
-    display: flex;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f7f7f7;
+    font-family: 'Arial', sans-serif;
     height: 100vh;
-    overflow: hidden;
-    position: relative; /* Для позиціонування фону */
+    overflow: hidden; /* Щоб не було зайвих скролів */
+    display: flex;
 }
 
-/* 1. ФОН, ЩО ПЕРЕЛИВАЄТЬСЯ (Додано) */
-body::before {
-    content: "";
+/* 2. АНІМОВАНИЙ ФОН (винесено окремо) */
+.bg-slideshow {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1; /* Фон позаду всього контенту */
+    z-index: -1; /* ЗАВЖДИ ПОЗАДУ */
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    
-    /* ШЛЯХИ ДО ТВОЇХ 3 ФОТОГРАФІЙ (ЗАМІНИ НА СВОЇ) */
-    background-image: url('img/pasika1.jpg'); /* Фото 1 */
-    
-    /* АНІМАЦІЯ ПЕРЕЛИВАННЯ (триває 15 секунд, безкінечна) */
     animation: backgroundFade 15s infinite;
 }
 
-/* КЛЮЧОВІ КАДРИ ДЛЯ ПЛАВНОЇ ЗМІНИ ФОНУ */
 @keyframes backgroundFade {
-    0%, 100% {
-        background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/31/%D0%94%D1%83%D0%B1%D0%B8_%D0%BD%D0%B0_%D0%B3%D0%B0%D0%BB%D1%8F%D0%B2%D0%B8%D0%BD%D1%96.jpg'); /* Фото 1 */
-        opacity: 1;
-    }
-    30% {
-        opacity: 0.8; /* Трохи прозорості під час зміни */
-    }
-    33% {
-        background-image: url('https://st.depositphotos.com/1000580/4405/i/450/depositphotos_44052373-stock-photo-spring-flower-meadow.jpg'); /* Фото 2 */
-        opacity: 1;
-    }
-    63% {
-        opacity: 0.8;
-    }
-    66% {
-        background-image: url('https://static5.depositphotos.com/1038117/462/i/450/depositphotos_4621883-stock-photo-field-of-daisy-flowers.jpg'); /* Фото 3 */
-        opacity: 1;
-    }
-    96% {
-        opacity: 0.8;
-    }
+    0%, 100% { background-image: url('img/pasika1.jpg'); }
+    33% { background-image: url('img/pasika2.jpg'); }
+    66% { background-image: url('img/pasika3.jpg'); }
 }
 
-/* 2. ЛОАДЕР (завантажувач) */
-#loader-wrapper {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-color: #fef08a;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    z-index: 9999;
-    transition: opacity 0.8s ease;
+/* 3. БІЧНА ПАНЕЛЬ */
+.sidebar {
+    width: 70px; height: 100vh;
+    background-color: #6d744e;
+    display: flex; flex-direction: column; align-items: center;
+    padding-top: 20px;
+    z-index: 100;
 }
-.loader-bee { font-size: 70px; animation: fly 1.5s ease-in-out infinite; }
-@keyframes fly {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-40px); }
+.side-btn {
+    width: 50px; height: 50px;
+    background-color: #d9db72;
+    margin-bottom: 15px; border-radius: 12px;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 24px; cursor: pointer; transition: 0.3s;
 }
+.side-btn:hover { transform: scale(1.1); background-color: #e2e48b; }
 
-/* 3. ГОЛОВНИЙ КОНТЕЙНЕР */
-.wrapper {
-    margin-left: 70px;
-    width: calc(100% - 70px);
-    opacity: 0; transition: opacity 1s ease-out;
-    background-color: rgba(255, 255, 255, 0.9); /* Напівпрозорий фон для контенту */
-    height: 100vh;
-}
-.wrapper.visible { opacity: 1; }
-
-/* Шапка */
-.apiary-header {
-    background-color: #fef08a;
-    height: 110px;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 40px; box-sizing: border-box;
+/* 4. ОСНОВНИЙ КОНТЕЙНЕР */
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     position: relative;
+    background-color: rgba(255, 255, 255, 0.4); /* Напівпрозорий шар поверх фото */
+}
+
+.header {
+    background-color: #fef08a;
+    height: 130px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 30px;
     border-bottom: 8px solid #fde047;
+    z-index: 10;
 }
 
-/* Пошук */
-.search-container {
-    display: flex; align-items: center;
-    background-color: #e5e5e5;
-    border-radius: 20px;
-    padding: 5px 15px;
-    width: 300px;
-}
-.search-container input {
-    border: none; background: transparent; outline: none;
-    width: 100%; margin-left: 10px;
-    color: #555; font-size: 14px;
-}
-
-/* Логотип */
-.brand-box {
+.logo-box {
     background-color: #fef987;
     border: 5px solid #facc15;
     border-radius: 15px;
     padding: 10px 30px;
     text-align: center;
 }
-.brand-box h1 { margin: 0; font-size: 38px; font-style: italic; color: #374151; }
-.brand-box p { margin: 5px 0 0 0; font-size: 13px; font-style: italic; color: #555; font-weight: 600; }
+.logo-box h1 { font-size: 32px; font-style: italic; color: #374151; }
 
-/* Кнопки справа */
-.right-buttons {
-    display: flex; flex-direction: column; gap: 8px;
-    align-items: flex-end;
-}
-.right-btn {
+.head-btn {
     background-color: #d9db72;
     border: 2px solid #555;
     border-radius: 20px;
     padding: 8px 25px;
-    font-weight: 700; font-style: italic; color: #374151;
-    cursor: pointer; transition: 0.3s;
-    text-align: center; width: 150px;
+    margin-bottom: 5px;
+    font-weight: bold; cursor: pointer;
+    display: block; width: 160px;
 }
-.right-btn:hover { background-color: #c9cc60; transform: scale(1.05); }
-.right-btn:active { transform: scale(0.95); }
 
-/* 4. БІЧНА ПАНЕЛЬ */
-.sidebar {
-    width: 70px; height: 100vh;
-    background-color: #6d744e;
-    display: flex; flex-direction: column; align-items: center;
-    padding-top: 15px;
-    position: fixed; left: 0; top: 0;
-    z-index: 100;
-}
-.side-icon-box {
-    width: 50px; height: 50px;
-    background-color: #d9db72;
-    margin-bottom: 12px;
-    border-radius: 12px;
-    display: flex; justify-content: center; align-items: center;
-    font-size: 24px;
-    cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.side-icon-box:hover { transform: scale(1.2) rotate(5deg); background-color: #e2e48b; }
-.side-icon-box:active { transform: scale(0.9); }
-
-/* 5. КАРТКИ ТОВАРІВ */
-.product-grid {
+/* СІТКА ТОВАРІВ */
+.content {
+    padding: 40px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
-    padding: 50px;
-    box-sizing: border-box;
 }
-.product-card {
-    background-color: #ffffff;
-    border: 5px solid #d1d5db; /* Сіра рамка */
+.card {
+    background-color: rgba(255, 255, 255, 0.9); /* Картки білі, але трохи прозорі */
+    border: 4px solid #d1d5db;
     border-radius: 20px;
     height: 250px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-.product-card:hover {
-    border-color: #facc15;
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
 }
 
-/* Нижня жовта лінія */
 .footer-line {
-    position: fixed; bottom: 0; left: 0; width: 100%; height: 12px;
+    position: absolute; bottom: 0; width: 100%; height: 12px;
     background-color: #fde047;
-    z-index: 50;
 }

@@ -2,10 +2,15 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Golden Apiary - Catalog</title>
+    <title>Golden Apiary - Structured</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div id="loader">
+        <div class="bee-fly">🐝</div>
+        <p>ЗАВАНТАЖЕННЯ...</p>
+    </div>
 
     <nav class="sidebar">
         <div class="side-btn" id="btn-home">🏠</div>
@@ -17,31 +22,28 @@
     <div class="main-container">
         <header class="header">
             <div class="search-area">
-                <span style="font-size: 24px;">🐝🥄</span>
+                <span class="icon-group">🐝 Spoon</span>
                 <div class="search-bar">
                     <span>🔍</span>
-                    <input type="text" placeholder="Пошук у каталозі...">
+                    <input type="text" placeholder="Search goods...">
                 </div>
             </div>
 
             <div class="logo-box">
-                <h1>Наш Каталог</h1>
-                <p>Оберіть найкращий мед для себе</p>
+                <h1>Golden Apiary</h1>
+                <p>The best honey and bees straight from the beekeeper</p>
             </div>
 
             <div class="btn-group">
-                <button class="head-btn">Профіль</button>
-                <button class="head-btn" id="btn-back">На головну</button>
+                <button class="head-btn">Login</button>
+                <button class="head-btn" id="btn-catalog">Catalog of goods</button>
             </div>
         </header>
 
         <main class="content">
-            <div class="card" style="display:flex; align-items:center; justify-content:center;">🍯 Мед Акації</div>
-            <div class="card" style="display:flex; align-items:center; justify-content:center;">🍯 Гречаний</div>
-            <div class="card" style="display:flex; align-items:center; justify-content:center;">🐝 Пилок</div>
-            <div class="card" style="display:flex; align-items:center; justify-content:center;">🍯 Липовий</div>
-            <div class="card" style="display:flex; align-items:center; justify-content:center;">🐝 Прополіс</div>
-            <div class="card" style="display:flex; align-items:center; justify-content:center;">🍯 Квітковий</div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
         </main>
 
         <div class="footer-line"></div>

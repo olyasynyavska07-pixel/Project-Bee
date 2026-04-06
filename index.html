@@ -2,27 +2,28 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Golden Apiary - Structured</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Apiary - Clean Design</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="loader">
         <div class="bee-fly">🐝</div>
-        <p>ЗАВАНТАЖЕННЯ...</p>
+        <p class="loader-text">ЗАВАНТАЖЕННЯ...</p>
     </div>
 
-    <nav class="sidebar">
-        <div class="side-btn" id="btn-home">🏠</div>
+    <div class="sidebar">
+        <div class="side-btn" onclick="location.reload()">🏠</div>
         <div class="side-btn">🍯</div>
         <div class="side-btn">🐝</div>
         <div class="side-btn">🛒</div>
-    </nav>
+    </div>
 
     <div class="main-container">
         <header class="header">
             <div class="search-area">
-                <span class="icon-group">🐝 Spoon</span>
+                <span class="header-icons">🐝🥄</span>
                 <div class="search-bar">
                     <span>🔍</span>
                     <input type="text" placeholder="Search goods...">
@@ -30,13 +31,13 @@
             </div>
 
             <div class="logo-box">
-                <h1>Golden Apiary</h1>
+                <h1>🐝 Golden Apiary</h1>
                 <p>The best honey and bees straight from the beekeeper</p>
             </div>
 
             <div class="btn-group">
                 <button class="head-btn">Login</button>
-                <button class="head-btn" id="btn-catalog">Catalog of goods</button>
+                <button class="head-btn catalog-btn">Catalog of goods</button>
             </div>
         </header>
 

@@ -1,37 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Apiary - Clean Design</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <div class="bg-slideshow"></div>
 
-    <div class="app-container">
-        
-        <nav class="sidebar">
-            <div class="side-btn">🏠</div>
-            <div class="side-btn">🍯</div>
-            <div class="side-btn">🐝</div>
-            <div class="side-btn">🛒</div>
-        </nav>
+    <div id="loader">
+        <div class="bee-fly">🐝</div>
+        <p class="loader-text">ЗАВАНТАЖЕННЯ...</p>
+    </div>
 
-        <div class="main-content">
-            <header class="header">
+    <div class="sidebar">
+        <div class="side-btn" onclick="location.reload()">🏠</div>
+        <div class="side-btn">🍯</div>
+        <div class="side-btn">🐝</div>
+        <div class="side-btn">🛒</div>
+    </div>
+
+    <div class="main-container">
+        <header class="header">
+            <div class="search-area">
+                <span class="header-icons">🐝🥄</span>
                 <div class="search-bar">
+                    <span>🔍</span>
                     <input type="text" placeholder="Search goods...">
                 </div>
-                <div class="logo-box">
-                    <h1>Golden Apiary</h1>
-                    <p>The best honey and bees straight from the beekeeper</p>
-                </div>
-                <div class="btn-group">
-                    <button class="head-btn" onclick="location.href='login.html'">Login</button>
-                    <button class="head-btn">Catalog</button>
-                </div>
-            </header>
+            </div>
 
-            <main class="grid-container">
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-            </main>
+            <div class="logo-box">
+                <h1>🐝 Golden Apiary</h1>
+                <p>The best honey and bees straight from the beekeeper</p>
+            </div>
 
-            <div class="footer-line"></div>
-        </div>
+            <div class="btn-group">
+                <button class="head-btn">Login</button>
+                <button class="head-btn catalog-btn">Catalog of goods</button>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+        </main>
+
+        <div class="footer-line"></div>
     </div>
+
+    <script src="script.js"></script>
 </body>
+</html>

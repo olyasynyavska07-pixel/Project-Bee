@@ -2,102 +2,33 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Golden Apiary - Register</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Специфічні стилі саме для форми реєстрації */
-        .auth-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .auth-card {
-            background-color: #d1d5db; /* Сіра зовнішня рамка */
-            padding: 12px;
-            border-radius: 20px;
-            width: 420px;
-        }
-        .auth-inner {
-            background-color: #fef987; /* Жовтий фон */
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-        }
-        .auth-inner h2 { color: #a3a63c; margin-bottom: 15px; font-size: 26px; }
-        
-        .field-label { font-size: 10px; color: #999; text-align: left; margin-left: 15px; }
-        
-        .input-box {
-            width: 100%;
-            background-color: #e5e7eb;
-            border-radius: 20px;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-        .input-box input { border: none; background: transparent; outline: none; width: 100%; }
-        
-        .green-btn {
-            width: 100%;
-            background-color: #b8c16b;
-            border: none;
-            border-radius: 20px;
-            padding: 12px;
-            font-weight: bold;
-            color: #374151;
-            cursor: pointer;
-            margin: 5px 0;
-        }
-        .divider-line { height: 4px; background-color: #d1d5db; margin: 15px -25px; }
-    </style>
 </head>
 <body>
-
-    <div class="main-container">
-        <header class="header">
-            <div style="width: 70px;"><div class="side-btn" style="margin:0">🐝</div></div>
-            <div class="logo-box">
-                <h1>🐝 Golden Apiary</h1>
-                <p>The best honey and bees straight from the beekeeper</p>
-            </div>
-            <div class="btn-group">
-                <button class="head-btn" onclick="window.location.href='index.html'">Back</button>
-            </div>
-        </header>
-
-        <main class="auth-container">
-            <div class="auth-card">
-                <div class="auth-inner">
-                    <h2>Please register</h2>
-                    
-                    <p class="field-label">...</p>
-                    <div class="input-box"><span>👤</span><input type="text" placeholder="Login"></div>
-                    
-                    <p class="field-label">...</p>
-                    <div class="input-box"><span>📧</span><input type="email" placeholder="Email"></div>
-                    
-                    <p class="field-label">...</p>
-                    <div class="input-box"><span>🔑</span><input type="password" placeholder="Password"></div>
-                    
-                    <p class="field-label">...</p>
-                    <div class="input-box"><span>🔐</span><input type="password" placeholder="repeat Password"></div>
-
-                    <button class="green-btn">Sing</button>
-
-                    <div class="divider-line"></div>
-
-                    <div class="input-box" style="height: 40px; margin-top: 10px;"></div>
-                    <button class="green-btn" onclick="window.location.href='login.html'">Login</button>
+    <div class="bg-layer"></div>
+    <div class="main-layout">
+        <div class="right-section">
+            <header class="header">
+                <div class="side-btn" style="margin:0">🐝</div>
+                <div class="logo-box"><h1>Golden Apiary</h1></div>
+                <button class="head-btn" onclick="location.href='index.html'">Back</button>
+            </header>
+            <div class="auth-wrapper">
+                <div class="auth-card">
+                    <div class="auth-inner">
+                        <h2 style="color: #a3a63c; margin-bottom: 15px;">Please register</h2>
+                        <div class="input-box"><span>👤</span><input type="text" placeholder="Login"></div>
+                        <div class="input-box"><span>📧</span><input type="email" placeholder="Email"></div>
+                        <div class="input-box"><span>🔑</span><input type="password" placeholder="Password"></div>
+                        <div class="input-box"><span>🔐</span><input type="password" placeholder="repeat Password"></div>
+                        <button class="head-btn" style="width:100%; margin-top:10px;">Sing</button>
+                        <div style="height:4px; background:#d1d5db; margin: 15px -25px;"></div>
+                        <button class="head-btn" style="width:100%;" onclick="location.href='login.html'">Login</button>
+                    </div>
                 </div>
             </div>
-        </main>
-
-        <div class="footer-line"></div>
+            <div class="footer-line"></div>
+        </div>
     </div>
-
 </body>
 </html>

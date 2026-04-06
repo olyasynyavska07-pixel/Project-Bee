@@ -1,114 +1,100 @@
-/* БАЗОВІ НАЛАШТУВАННЯ */
+/* 1. ПОВНЕ ОБНУЛЕННЯ ТА ФІКСАЦІЯ ЕКРАНУ */
 * {
-    margin: 0; padding: 0; box-sizing: border-box;
-    -webkit-user-select: none; user-select: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Важливо: щоб рамки не розширювали блоки */
 }
-input { -webkit-user-select: text; user-select: text; }
 
 body, html {
-    height: 100vh; width: 100vw;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Забороняємо прокрутку всього екрану */
     font-family: 'Arial', sans-serif;
-    overflow: hidden;
-    display: flex;
 }
 
-/* АНІМОВАНИЙ ФОН НА ВЕСЬ ЕКРАН */
+/* 2. ФОН, ЯКИЙ НІЧОГО НЕ ЛАМАЄ */
 .bg-layer {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1;
-    background-size: cover;
+    position: fixed; /* Завжди на місці */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Відправляємо на самий задній план */
+    background-image: url('pasika1.jpg'); /* Твоє фото */
+    background-size: cover; /* Фото розтягується на весь екран без деформації */
     background-position: center;
-    animation: backgroundFade 15s infinite;
 }
 
-@keyframes backgroundFade {
-    0%, 100% { background-image: url('pasika1.jpg'); background-color: #6d744e; }
-    33% { background-image: url('pasika2.jpg'); background-color: #fde047; }
-    66% { background-image: url('pasika3.jpg'); background-color: #a3a63c; }
-}
-
+/* 3. ОСНОВНА СІТКА (LAYOUT) */
 .main-layout {
-    display: flex; width: 100%; height: 100%;
-    position: relative; z-index: 1;
+    display: flex; /* Розділяємо екран на ліву панель і контент */
+    width: 100%;
+    height: 100%;
 }
 
-/* САЙДБАР (ЛІВА ПАНЕЛЬ) */
+/* ЛІВА ПАНЕЛЬ (САЙДБАР) */
 .sidebar {
-    width: 75px; height: 100%;
-    background-color: #6d744e;
-    display: flex; flex-direction: column; align-items: center;
-    padding-top: 15px; flex-shrink: 0;
+    width: 75px;
+    height: 100%;
+    background-color: #6d744e; /* Твій оливковий колір */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    flex-shrink: 0; /* Забороняємо панелі стискатися */
 }
 
-.side-btn {
-    width: 55px; height: 55px;
-    background-color: #d9db72;
-    margin-bottom: 12px; border-radius: 12px;
-    display: flex; justify-content: center; align-items: center;
-    font-size: 26px; cursor: pointer; transition: 0.3s;
-}
-
-/* ПРАВА СЕКЦІЯ */
+/* ПРАВА ЧАСТИНА (ШАПКА + КОНТЕНТ + ПДВАЛ) */
 .right-section {
-    flex: 1;
-    display: flex; flex-direction: column;
-    background-color: transparent; /* Щоб бачити фон */
+    flex: 1; /* Займає весь вільний простір праворуч */
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.1); /* Ледь помітний шар поверх фото */
 }
 
-/* ШАПКА (БЕЗ ЗАЙВИХ СМУГ) */
+/* ШАПКА */
 .header {
     background-color: #fef08a;
     height: 120px;
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 0 40px;
     flex-shrink: 0;
-    /* Жовту смугу (border-bottom) видалено */
 }
 
+/* ЛОГОТИП ПО ЦЕНТРУ */
 .logo-box {
     background-color: #fef987;
     border: 5px solid #facc15;
     border-radius: 15px;
-    padding: 10px 40px;
+    padding: 10px 30px;
     text-align: center;
 }
 
-.logo-box h1 { font-size: 36px; font-style: italic; color: #374151; }
-
-.head-btn {
-    background-color: #d9db72;
-    border: 2px solid #555;
-    border-radius: 20px;
-    padding: 8px 30px;
-    font-weight: bold; cursor: pointer;
-    width: 170px;
-}
-
-/* КОНТЕНТ З КАРТКАМИ */
+/* ТОВАРИ (КАРТКИ) */
 .content-area {
     flex: 1;
     padding: 40px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    overflow-y: auto;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    gap: 25px;
+    overflow-y: auto; /* Тільки тут можна скролити, якщо товарів багато */
 }
 
 .card {
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 5px solid #d1d5db;
-    border-radius: 25px;
-    height: 280px;
+    background: white;
+    border: 4px solid #d1d5db;
+    border-radius: 20px;
+    height: 250px;
 }
-.card.active { border-color: #3b82f6; } /* Синя рамка для другої картки */
 
-/* ПІДВАЛ САЙТУ */
+/* ПДВАЛ (FOOTER) */
 .footer-line {
     height: 80px;
     width: 100%;
     background-color: #fef08a;
-    border-top: 8px solid #fde047; /* Лінія тепер тільки зверху підвалу */
+    border-top: 6px solid #fde047;
     display: flex;
     align-items: center;
     justify-content: center;

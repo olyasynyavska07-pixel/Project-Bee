@@ -1,18 +1,38 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
+    <title>Мій Вулик</title>
     <style>
-      button {
-        padding: 200px;
-        margen: 500px;
-      }
+        /* Це CSS (фарба) */
+        body { text-align: center; font-family: sans-serif; background: #fffbe6; }
+        button { padding: 10px 20px; font-size: 20px; cursor: pointer; background: orange; border: none; border-radius: 5px; }
+        #counter { font-size: 50px; color: brown; }
     </style>
-  </head>
+</head>
 <body>
-<button onclick="sayHello()">lol</button>
+
+    <h1>Мій віртуальний вулик 🐝</h1>
+    
+    <div id="counter">0</div>
+    <p>бджіл прилетіло</p>
+
+    <button onclick="addBee()">Додати бджолу!</button>
+
+    <script>
+        // Це JavaScript (мізки сайту)
+        
+        // 1. Створюємо "коробку" (змінну) і кладемо туди 0
+        let count = 0;
+
+        // 2. Створюємо команду (функцію)
+        function addBee() {
+            // Збільшуємо число в коробці на 1
+            count = count + 1;
+            
+            // Кажемо комп'ютеру: "Знайди на екрані блок з id 'counter' і напиши там нове число"
+            document.getElementById("counter").innerText = count;
+        }
+    </script>
+
 </body>
-  <script>
-    function sayHello() {
-      alert("bomb")
-    }
-  </script>
 </html>

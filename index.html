@@ -1,35 +1,721 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
-    <title>Мій Вулик</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Марсіанська Експедиція: Термінал</title>
     <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: radial-gradient(circle, #1a100d 0%, #160d0a 100%);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        .tablet-body {
+            width: 1800px;
+            height: 925px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%, rgba(0,0,0,0.1) 100%), repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.1) 3px), #2a2a2a;
+            border-radius: 25px;
+            border: 4px solid #3d3d3d;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 40px rgba(0,0,0,0.5);
+            padding: 20px 50px 20px 90px;
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .tablet-body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 25px;
+            pointer-events: none;
+            background: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.1) 0%, transparent 15%), radial-gradient(circle at 95% 85%, rgba(255,255,255,0.08) 0%, transparent 20%);
+            mask-image: linear-gradient(30deg, #000 20%, transparent 21%, transparent 22%, #000 23%);
+            opacity: 0.6;
+        }
+        .tablet-button {
+            width: 60px;
+            height: 80px;
+            background: #333;
+            border-radius: 5px;
+            border: 5px solid #555;
+            position: absolute;
+            bottom: 430px;
+            left: 43px;
+            transform: translateX(-50%);
+            cursor: pointer;
+            box-shadow: inset 0 2px 5px rgba(255,255,255,0.1);
+            z-index: 100;
+        }
+        .tablet-button:hover { background: #555; }
+        .tablet-button:active { transform: translateX(-50%) scale(0.95); }
+        
+        .power-hint {
+            position: absolute;
+            left: 70px;
+            bottom: 470px;
+            color: #444;
+            font-size: 14px;
+            white-space: nowrap;
+            animation: pulseHint 2s infinite;
+        }
+        @keyframes pulseHint {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; color: #666; }
+        }
 
+        .tablet-button1 {
+            width: 7px;
+            height: 350px;
+            background: #444;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 300px;
+            right: 6px;
+            transform: translateX(-50%);
+            border: 5px solid #6e6d6d;
+        }
+        .tablet-camera {
+            width: 8px;
+            height: 8px;
+            background: #111;
+            border-radius: 50%;
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .tablet-screen {
+            flex-grow: 1;
+            background: black;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 15px solid #444343;
+        }
+        
+        #alarm-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 0, 0, 0.15);
+            z-index: 25;
+            pointer-events: none;
+            display: none;
+        }
+        .alarm-active {
+            display: block !important;
+            animation: alarmPulse 1.5s infinite alternate ease-in-out;
+        }
+        @keyframes alarmPulse {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .tablet-screen::after {
+            content: "";
+            position: absolute;
+            top: -20%; left: -20%; width: 140%; height: 140%;
+            background: linear-gradient(135deg, transparent 0%, rgba(22, 22, 22) 15%, rgba(37, 37, 37) 25%, transparent 0%), linear-gradient(135deg, transparent 0%, rgba(22, 22, 22) 15%, rgba(37, 37, 37) 50%, transparent 0%), linear-gradient(135deg, transparent 0%, rgba(22, 22, 22) 30%, rgb(41, 41, 41) 70%, transparent 0%), linear-gradient(135deg, transparent 0%, rgba(22, 22, 22) 22%, rgba(37, 37, 37) 87%, transparent 0%);
+            filter: blur(18px); z-index: 30; pointer-events: none; transition: opacity 2.5s ease-in-out; opacity: 0.9;
+        }
+        .powered-on .tablet-screen::after { opacity: 0.25; }
+
+        #noise-canvas {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 500; pointer-events: none; opacity: 0;
+        }
+        .powered-on #noise-canvas {
+            opacity: 0.7;
+            animation: noiseFadeOut 8s forwards;
+        }
+        @keyframes noiseFadeOut {
+            0% { opacity: 0.7; }
+            70% { opacity: 0.4; }
+            100% { opacity: 0.05; }
+        }
+
+        .scanline, .loading-container, .error-container, .welcome-screen, .assistant-ui { display: none; }
+        .powered-on .scanline, .powered-on .loading-container { display: flex; }
+        
+        .scanline {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 21;
+            animation: scanline-move 1.5s linear infinite;
+        }
+        @keyframes scanline-move { 0% { top: -10px; } 100% { top: 100%; } }
+        
+        .loading-container {
+            flex-direction: column;
+            align-items: center;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 1.2s ease-out;
+            animation: fadeIn 0.5s forwards 0.5s;
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+        
+        .loading-text {
+            font-size: 32px;
+            color: #00ffff;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .dots::after {
+            content: '';
+            animation: dot-animation 1.5s infinite;
+        }
+        @keyframes dot-animation {
+            0% { content: ''; }
+            33% { content: '.'; }
+            66% { content: '..'; }
+            100% { content: '...'; }
+        }
+
+        .new-progress-bar { display: flex; gap: 5px; width: 600px; height: 40px; border: 3px solid #00ffff; padding: 5px; box-sizing: border-box; }
+        .block { flex: 1; background: #00ffff; opacity: 0; box-shadow: 0 0 10px #00ffff; }
+        .powered-on .block { animation: blockShow 0.1s forwards; }
+        @keyframes blockShow { to { opacity: 1; } }
+        
+        .block:nth-child(1) { animation-delay: 1.5s; } .block:nth-child(2) { animation-delay: 1.8s; }
+        .block:nth-child(3) { animation-delay: 2.1s; } .block:nth-child(4) { animation-delay: 2.4s; }
+        .block:nth-child(5) { animation-delay: 2.7s; } .block:nth-child(6) { animation-delay: 3.0s; }
+        .block:nth-child(7) { animation-delay: 3.3s; } .block:nth-child(8) { animation-delay: 3.6s; }
+        .block:nth-child(9) { animation-delay: 3.9s; } .block:nth-child(10){ animation-delay: 4.2s; }
+        .block:nth-child(11){ animation-delay: 4.5s; } .block:nth-child(12){ animation-delay: 4.8s; }
+        
+        .error-container {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            z-index: 40;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .status-yellow { color: #ffff00; font-size: 14px; text-shadow: 0 0 5px #ffff00; margin-bottom: 5px; display: none; white-space: pre-wrap; }
+        .status-red { color: #e24747; font-size: 14px; text-shadow: 0 0 5px #e24747; margin-bottom: 5px; white-space: pre-wrap; }
+
+        .error-row {
+            display: none;
+            align-items: center; gap: 12px;
+            color: #ff0000; font-size: 12px;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        .repair-btn {
+            background: transparent;
+            color: #ff0000;
+            border: 1px solid #ff0000;
+            padding: 1px 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 10px;
+            display: none;
+            transition: all 0.3s ease;
+        }
+        .repair-btn:hover {
+            background: #ff0000;
+            color: #000;
+            box-shadow: 0 0 10px #ff0000;
+        }
+
+        .repairing-loader {
+            width: 60px;
+            height: 8px;  
+            border: 1px solid #ffff00;
+            position: relative;
+            display: none;
+            overflow: hidden;
+        }
+        .moving-cube {
+            width: 10px;
+            height: 100%;
+            background: #ffff00;
+            box-shadow: 0 0 5px #ffff00;
+            position: absolute;
+            left: -10px;
+            animation: cubeMove 0.8s linear infinite;
+        }
+        @keyframes cubeMove {
+            0% { left: -10px; }
+            100% { left: 60px; }
+        }
+
+        .fixed { color: #00ff00; text-shadow: 0 0 5px #00ff00; }
+        .fixed .repair-btn, .fixed .repairing-loader { display: none !important; }
+
+        .reboot-row {
+            margin-top: 15px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .reboot-msg {
+            color: #00ff00;
+            font-size: 14px;
+            text-shadow: 0 0 5px #00ff00;
+            white-space: pre-wrap;
+        }
+        
+        .reboot-btns-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .reboot-confirm-btn {
+            background: transparent;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 5px 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 16px;
+            width: fit-content;
+            transition: all 0.3s ease;
+            display: none;
+        }
+        .reboot-confirm-btn:hover {
+            background: #00ff00;
+            color: #000;
+            box-shadow: 0 0 15px #00ff00;
+        }
+
+        #reboot-no-btn {
+            color: #ff0000;
+            border-color: #ff0000;
+        }
+        #reboot-no-btn:hover {
+            background: #ff0000;
+            color: #000;
+            box-shadow: 0 0 15px #ff0000;
+        }
+
+        .loading-status-small-yellow {
+            color: #ffff00 !important;
+            font-size: 14px !important;
+            text-shadow: 0 0 5px #ffff00 !important;
+        }
+        .loading-status-small-green {
+            color: #00ff00 !important;
+            font-size: 14px !important;
+            text-shadow: 0 0 5px #00ff00 !important;
+        }
+
+        .welcome-screen {
+            position: absolute; 
+            top: 25px; 
+            left: 25px;
+            z-index: 45; 
+            display: none;
+            white-space: pre-wrap;
+        }
+
+        .assistant-ui {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            z-index: 50;
+            flex-direction: column;
+            gap: 0px; 
+            max-width: 900px;
+            display: none;
+        }
+        .assistant-header {
+            color: #00ff00;
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ff00;
+            margin-bottom: 5px;
+        }
+        .assistant-msg {
+            color: #00ffff;
+            font-size: 14px;
+            text-shadow: 0 0 5px #00ffff;
+            line-height: 1.4;
+        }
+        .login-confirm {
+            color: #00ff00;
+            font-size: 14px;
+            text-shadow: 0 0 5px #00ff00;
+            margin: 0; 
+            padding: 0;
+        }
+        .input-area {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .terminal-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #00ffff;
+            color: #00ffff;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+            width: 200px;
+            padding: 2px 5px;
+        }
+        .submit-btn {
+            background: transparent;
+            color: #00ffff;
+            border: 1px solid #00ffff;
+            padding: 2px 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+        .submit-btn:hover {
+            background: #00ffff;
+            color: #000;
+            box-shadow: 0 0 10px #00ffff;
+        }
+
+        .menu-loading-line {
+            color: #ffff00;
+            font-size: 14px;
+            text-shadow: 0 0 8px #ffff00;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .scary-smiley {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e24747;
+            font-size: 350px;
+            font-weight: bold;
+            z-index: 100;
+            text-shadow: 0 0 60px #e24747;
+        }
     </style>
 </head>
 <body>
+    <!-- АУДІО ФАЙЛИ -->
+    <audio id="snd-power" src="Pomex.mp3"></audio>
+    <audio id="snd-hum" src="hoh.mp3" loop></audio> <!-- Постійне гудіння системи -->
+    <audio id="snd-typing" src="B.mp3" loop></audio> <!-- Звичайний друк -->
+    <audio id="snd-error" src="U.mp3" loop></audio> <!-- Помилка (червоний) -->
+    <audio id="snd-alarm" src="lol.mp3" loop></audio>
+    <audio id="snd-repair" src="fof.mp3"></audio>
+    <audio id="snd-success" src="gog.mp3"></audio>
 
-    <h1>Мій віртуальний вулик 🐝</h1>
-    
-    <div id="counter">0</div>
-    <p>бджіл прилетіло</p>
+    <div class="tablet-body" id="tablet">
+        <div class="tablet-camera"></div>
+        <div class="tablet-screen" id="screen-container">
+            <div id="alarm-overlay"></div>
+            <canvas id="noise-canvas"></canvas>
+            <div class="scanline"></div>
+            <div class="loading-container" id="loading-ui">
+                <div class="loading-text">Loading<span class="dots"></span></div>
+                <div class="new-progress-bar">
+                    <div class="block"></div><div class="block"></div><div class="block"></div>
+                    <div class="block"></div><div class="block"></div><div class="block"></div>
+                    <div class="block"></div><div class="block"></div><div class="block"></div>
+                    <div class="block"></div><div class="block"></div><div class="block"></div>
+                </div>
+            </div>
+            <div class="error-container" id="error-ui">
+                <div id="dynamic-line" class="status-yellow"></div>
+                <div class="error-row" id="err-1"><span class="msg"></span><button class="repair-btn" onclick="startRepair(1)">[REPAIR]</button><div class="repairing-loader"><div class="moving-cube"></div></div></div>
+                <div class="error-row" id="err-2"><span class="msg"></span><button class="repair-btn" onclick="startRepair(2)">[REPAIR]</button><div class="repairing-loader"><div class="moving-cube"></div></div></div>
+                <div class="error-row" id="err-3"><span class="msg"></span><button class="repair-btn" onclick="startRepair(3)">[REPAIR]</button><div class="repairing-loader"><div class="moving-cube"></div></div></div>
+                <div class="error-row" id="err-4"><span class="msg"></span><button class="repair-btn" onclick="startRepair(4)">[REPAIR]</button><div class="repairing-loader"><div class="moving-cube"></div></div></div>
+                
+                <div class="reboot-row" id="reboot-ui">
+                    <span class="reboot-msg" id="reboot-text"></span>
+                    <div class="reboot-btns-container">
+                        <button class="reboot-confirm-btn" id="reboot-btn" onclick="rebootSystem(true)">ТАК</button>
+                        <button class="reboot-confirm-btn" id="reboot-no-btn" onclick="rebootSystem(false)">НІ</button>
+                    </div>
+                </div>
+            </div>
+            <div id="welcome-ui" class="welcome-screen"></div>
 
-    <button onclick="addBee()">Додати бджолу!</button>
+            <div id="assistant-ui" class="assistant-ui">
+                <div class="assistant-header" id="aster-title"></div>
+                <div id="dialog-history" class="assistant-msg"></div>
+                <div class="assistant-msg" id="aster-speech"></div>
+                
+                <div class="input-area" id="name-input-area">
+                    <input type="text" id="user-name-field" class="terminal-input" placeholder="Введіть ім'я..." autocomplete="off">
+                    <button class="submit-btn" onclick="saveName()">ВВЕСТИ</button>
+                </div>
+
+                <div class="input-area" id="menu-search-area">
+                    <input type="text" id="menu-input-field" class="terminal-input" placeholder="Команда..." autocomplete="off">
+                    <button class="submit-btn" onclick="checkMenuCommand()">ВИКОНАТИ</button>
+                </div>
+            </div>
+        </div>
+        <div class="tablet-button" id="power-on-btn"></div>
+        <div class="power-hint" id="hint">← CLICK TO POWER ON</div>
+        <div class="tablet-button1"></div>
+    </div>
 
     <script>
-        // Це JavaScript (мізки сайту)
-        
-        // 1. Створюємо "коробку" (змінну) і кладемо туди 0
-        let count = 0;
+        const canvas = document.getElementById('noise-canvas');
+        const ctx = canvas.getContext('2d');
+        const powerBtn = document.getElementById('power-on-btn');
+        const loadingUI = document.getElementById('loading-ui');
+        const errorUI = document.getElementById('error-ui');
+        const rebootUI = document.getElementById('reboot-ui');
+        const rebootText = document.getElementById('reboot-text');
+        const rebootBtn = document.getElementById('reboot-btn');
+        const rebootNoBtn = document.getElementById('reboot-no-btn');
+        const welcomeUI = document.getElementById('welcome-ui');
+        const dynamicLine = document.getElementById('dynamic-line');
+        const screenContainer = document.getElementById('screen-container');
+        const assistantUI = document.getElementById('assistant-ui');
+        const asterSpeech = document.getElementById('aster-speech');
+        const dialogHistory = document.getElementById('dialog-history');
+        const asterTitle = document.getElementById('aster-title');
+        const nameInputArea = document.getElementById('name-input-area');
+        const menuSearchArea = document.getElementById('menu-search-area');
+        const alarmOverlay = document.getElementById('alarm-overlay');
 
-        // 2. Створюємо команду (функцію)
-        function addBee() {
-            // Збільшуємо число в коробці на 1
-            count = count + 1;
-            
-            // Кажемо комп'ютеру: "Знайди на екрані блок з id 'counter' і напиши там нове число"
-            
+        const sndPower = document.getElementById('snd-power');
+        const sndHum = document.getElementById('snd-hum');
+        const sndTyping = document.getElementById('snd-typing');
+        const sndError = document.getElementById('snd-error');
+        const sndAlarm = document.getElementById('snd-alarm');
+        const sndRepair = document.getElementById('snd-repair');
+        const sndSuccess = document.getElementById('snd-success');
+
+        let isPoweredOn = false;
+        let fixedCount = 0;
+        let isBroken = false;
+
+        function playTyping(type) {
+            if(type === 'error') {
+                sndError.play();
+            } else {
+                sndTyping.play();
+            }
         }
-    </script>
 
+        function stopTyping() {
+            sndTyping.pause(); sndTyping.currentTime = 0;
+            sndError.pause(); sndError.currentTime = 0;
+        }
+
+        async function typeText(element, text, speed = 40, soundType = 'normal') {
+            playTyping(soundType);
+            for (let char of text) {
+                if (char === '\n') {
+                    element.innerHTML += '<br>';
+                } else {
+                    element.innerHTML += char;
+                }
+                await new Promise(r => setTimeout(r, speed));
+            }
+            stopTyping();
+        }
+
+        async function typeTextWithDelays(element, text, charSpeed = 40, lineDelay = 2000, soundType = 'normal') {
+            const lines = text.split('\n');
+            for (let i = 0; i < lines.length; i++) {
+                await typeText(element, lines[i], charSpeed, soundType);
+                if (i < lines.length - 1) {
+                    element.innerHTML += '<br>';
+                    await new Promise(r => setTimeout(r, lineDelay));
+                }
+            }
+        }
+
+        function addMovingDots(element) {
+            const dotsSpan = document.createElement('span');
+            dotsSpan.className = 'dots';
+            element.appendChild(dotsSpan);
+        }
+
+        function noise() {
+            if (!isPoweredOn) return;
+            canvas.width = canvas.offsetWidth / 2; canvas.height = canvas.offsetHeight / 2;
+            const idata = ctx.createImageData(canvas.width, canvas.height);
+            const buffer32 = new Uint32Array(idata.data.buffer);
+            let density = isBroken ? 0.95 : 0.5;
+            for (let i = 0; i < buffer32.length; i++) buffer32[i] = Math.random() < density ? 0xffffffff : 0xff000000;
+            ctx.putImageData(idata, 0, 0);
+            ctx.imageSmoothingEnabled = false;
+            requestAnimationFrame(noise);
+        }
+
+        async function startRepair(id) {
+            const row = document.getElementById('err-' + id);
+            const btn = row.querySelector('.repair-btn');
+            const loader = row.querySelector('.repairing-loader');
+            btn.style.display = 'none';
+            loader.style.display = 'block';
+            sndRepair.play();
+            await new Promise(r => setTimeout(r, 7000));
+            const msg = row.querySelector('.msg');
+            row.classList.add('fixed');
+            msg.innerText = msg.innerText.replace('Error', 'OK') + ' [CLEARED]';
+            sndSuccess.play();
+            fixedCount++;
+            if (fixedCount === 4) showFinalLoading();
+        }
+
+        async function showFinalLoading() {
+            alarmOverlay.classList.remove('alarm-active');
+            sndAlarm.pause();
+            rebootUI.style.display = 'flex';
+            rebootText.innerHTML = "";
+            await typeText(rebootText, "> Оптимізація файлів та перевірка цілісності", 40, 'normal');
+            addMovingDots(rebootText);
+            await new Promise(r => setTimeout(r, 6000));
+            rebootText.innerHTML = "";
+            await typeText(rebootText, "> Усі системи відновлено.\n> Бажаєте перевантажити систему?", 50, 'normal');
+            rebootBtn.style.display = 'block';
+            rebootNoBtn.style.display = 'block';
+        }
+
+        async function rebootSystem(choice) {
+            if (choice === true) {
+                errorUI.style.display = 'none';
+                welcomeUI.style.display = 'block';
+                welcomeUI.innerHTML = "";
+                welcomeUI.className = 'welcome-screen loading-status-small-yellow';
+                await typeText(welcomeUI, "> Завантаження систем", 50, 'normal');
+                addMovingDots(welcomeUI);
+                await new Promise(r => setTimeout(r, 5000));
+                welcomeUI.innerHTML = ""; 
+                welcomeUI.className = 'welcome-screen loading-status-small-green';
+                await typeText(welcomeUI, "> Система завантажена", 50, 'normal');
+                setTimeout(() => {
+                    welcomeUI.style.display = 'none';
+                    startAssistant();
+                }, 2000);
+            } else {
+                errorUI.style.display = 'none';
+                alarmOverlay.classList.remove('alarm-active'); 
+                const smiley = document.createElement('div');
+                smiley.className = 'scary-smiley';
+                smiley.innerText = ");";
+                screenContainer.appendChild(smiley);
+                isBroken = true;
+                sndHum.pause(); // Вимикаємо гудіння при "смерті"
+                setTimeout(() => location.reload(), 4000);
+            }
+        }
+
+        async function startAssistant() {
+            assistantUI.style.display = 'flex';
+            asterTitle.innerHTML = "";
+            asterSpeech.innerHTML = "";
+            await typeText(asterTitle, "[ SYSTEM ASSISTANT: ASTER ]", 30, 'normal');
+            await new Promise(r => setTimeout(r, 1000));
+            await typeTextWithDelays(asterSpeech, "> Добрий вечір\n> Пане/Пані/Панове\n> Мене звати Астер, я Асистент цього приладу.\n> Мене створили щоб помагати людям на марсі, мене створила людина на ім'я #####.\n> Спершу як ми почнем діалог, не міг би я дізнатися ваше ім'я?", 40, 2000, 'normal');
+            nameInputArea.style.display = 'flex';
+        }
+
+        async function saveName() {
+            const nameField = document.getElementById('user-name-field');
+            const name = nameField.value.trim();
+            if(name !== "") {
+                nameInputArea.style.display = 'none';
+                dialogHistory.innerHTML = asterSpeech.innerHTML; 
+                asterSpeech.innerHTML = ""; 
+                const loginLine = document.createElement('div');
+                loginLine.className = 'login-confirm';
+                dialogHistory.appendChild(loginLine);
+                await typeText(loginLine, `[вхід виконано]: Вітаю "${name}", система зберегла вас`, 35, 'normal');
+                await new Promise(r => setTimeout(r, 500));
+                await typeTextWithDelays(asterSpeech, `> Що ж ${name}, думаю ви не спроста мене включили.\n> Думаю ви хочете дізнатися про Марс більше.\n> Хех, гаразд.\n> Введіть "Menu:ner", якщо хочете увійти в меню.`, 45, 2000, 'normal');
+                menuSearchArea.style.display = 'flex';
+            }
+        }
+
+        async function checkMenuCommand() {
+            const cmdField = document.getElementById('menu-input-field');
+            const cmd = cmdField.value.trim();
+            if(cmd === "Menu:ner") {
+                cmdField.value = "";
+                menuSearchArea.style.display = 'none';
+                const menuLoading = document.createElement('div');
+                menuLoading.className = 'menu-loading-line';
+                asterSpeech.appendChild(menuLoading);
+                await typeText(menuLoading, "> Завантаження Меню", 50, 'normal');
+                addMovingDots(menuLoading);
+                setTimeout(() => { window.location.href = 'menu.html'; }, 4000);
+            }
+        }
+
+        powerBtn.addEventListener('click', function() {
+            if (isPoweredOn) return;
+            isPoweredOn = true;
+            sndPower.play();
+            
+            // Запуск гудіння одразу після Pomex.mp3
+            sndPower.onended = () => {
+                if(!isBroken) {
+                    sndHum.volume = 0.3; // Робимо шум не надто голосним
+                    sndHum.play();
+                }
+            };
+
+            document.getElementById('tablet').classList.add('powered-on');
+            document.getElementById('hint').style.display = 'none';
+            noise();
+            
+            setTimeout(() => {
+                loadingUI.style.opacity = '0';
+                setTimeout(async () => {
+                    loadingUI.style.display = 'none';
+                    await new Promise(r => setTimeout(r, 1000));
+                    errorUI.style.display = 'flex';
+                    dynamicLine.style.display = 'block';
+                    await typeText(dynamicLine, "> Завантаження систем", 50, 'normal');
+                    addMovingDots(dynamicLine);
+                    await new Promise(r => setTimeout(r, 5000));
+                    
+                    alarmOverlay.classList.add('alarm-active');
+                    sndAlarm.play();
+                    
+                    dynamicLine.innerHTML = "";
+                    dynamicLine.className = 'status-red';
+                    await typeText(dynamicLine, "> ЗНАЙДЕНО КРИТИЧНІ ПОШКОДЖЕННЯ!!!\n", 50, 'error');
+                    await typeText(dynamicLine, "> У разі переохолодження, Материнська плата була поламана!!!\n> Через уламки каміння було порвано Кисневий Насос!!!\n> Через уламки каміння провід сигналу було перервано!!!\n> Ядро було пошкоджене через ######## ###### ####!!!\n\n> (ЗРемОнтУй якШо хоЧиШ ПроЙти дАлі...)\n", 25, 'error');
+                    
+                    const errorData = [
+                        { id: 'err-1', text: "> Error: Motherboard_Short" },
+                        { id: 'err-2', text: "> Error: Oxygen_Pump_Offline" },
+                        { id: 'err-3', text: "> Error: Signal_Lost" },
+                        { id: 'err-4', text: "> Error: Core_Overheat" }
+                    ];
+                    for (let item of errorData) {
+                        let row = document.getElementById(item.id);
+                        row.style.display = 'flex';
+                        await typeText(row.querySelector('.msg'), item.text, 30, 'error');
+                        row.querySelector('.repair-btn').style.display = 'inline-block';
+                    }
+                }, 1200);
+            }, 5500);
+        });
+    </script>
 </body>
 </html>
